@@ -255,7 +255,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 	
 	
 	
-	@Column(name = "brand", unique = false, nullable = true, insertable = true, updatable = true, length = 100)
+	/*@Column(name = "brand", unique = false, nullable = true, insertable = true, updatable = true, length = 100)
 	public java.lang.String getBrand() {
 		return this.brand;
 	}
@@ -298,7 +298,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 	
 	public void setUserType(java.lang.String value) {
 		this.userType = value;
-	}
+	}*/
 	
 	@Column(name = "IV_USER_ID", unique = true, nullable = true, insertable = true, updatable = true, length = 60)
 	public java.lang.String getIvUserId() {
@@ -309,14 +309,14 @@ public class Users extends BaseEntity implements java.io.Serializable{
 		this.ivUserId = ivUserId;
 	}
 	
-	@Column(name = "is_rssc_code", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	/*@Column(name = "is_rssc_code", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
 	public java.lang.String getIsRsscCode() {
 		return isRsscCode;
 	}
 
 	public void setIsRsscCode(java.lang.String isRsscCode) {
 		this.isRsscCode = isRsscCode;
-	}
+	}*/
 
 	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)

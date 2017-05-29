@@ -222,7 +222,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		}*/
 		return listFinal;
 	}
-	
+	/*
 	public List<String> getKeyword(Users user, String type) throws Exception {
 		List<String> arr = new ArrayList<String>();
 		List<Roles> list = this.getRolesByUser(user);
@@ -254,7 +254,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 			};
 		}
 		return arr;
-	}
+	}*/
 	//static final String rs_pk_resource = "ID_RESOURCE";
 	public List<Resources> getResourcesByUser(Users user) throws Exception {
 		Session session = this.usersDao.getSessionFactory().openSession();

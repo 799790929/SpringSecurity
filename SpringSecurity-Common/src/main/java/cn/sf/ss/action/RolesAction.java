@@ -207,7 +207,7 @@ public class RolesAction extends BaseStruts2Action implements Preparable,ModelDr
 		Roles role = new Roles();
 		role.setName(name);
 		role.setDescri(descri);
-		role.setScope(scope);
+		//role.setScope(scope);
 		role.setEnable("1");
 		role.setCreatedt(new Date());
 		role.setUpdatedt(new Date());
@@ -239,13 +239,13 @@ public class RolesAction extends BaseStruts2Action implements Preparable,ModelDr
 		Roles role = new Roles();
 		role.setName(name);
 		role.setDescri(descri);
-		role.setBrand(brand);
+		/*role.setBrand(brand);
 		role.setDealerCode(dealerCode);
 		role.setDealerName(dealerName);
 		role.setDealer(dealer);
 		role.setScope(scope);
 		role.setSystemFirstPage(systemFirstPage);
-		role.setSearchFirstPage(searchFirstPage);
+		role.setSearchFirstPage(searchFirstPage);*/
 		role.setEnable("1");
 		role.setCreatedt(new Date());
 		role.setUpdatedt(new Date());
@@ -306,13 +306,13 @@ public class RolesAction extends BaseStruts2Action implements Preparable,ModelDr
 		}
 		role.setName(name);
 		role.setDescri(descri);
-		role.setBrand(brand);
+		/*role.setBrand(brand);
 		role.setDealerCode(dealerCode);
 		role.setDealerName(dealerName);
 		role.setDealer(dealer);
 		role.setScope(scope);
 		role.setSystemFirstPage(systemFirstPage);
-		role.setSearchFirstPage(searchFirstPage);
+		role.setSearchFirstPage(searchFirstPage);*/
 		role.setEnable("1");
 		//role.setCreatedt(new Date());
 		role.setUpdatedt(new Date());

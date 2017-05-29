@@ -152,14 +152,14 @@ public class Roles extends BaseEntity implements java.io.Serializable{
 	public void setDescri(java.lang.String value) {
 		this.descri = value;
 	}
-	@Column(name = "TARGET_SCOPE", unique = false, nullable = true, insertable = true, updatable = true, length = 50)
+	/*@Column(name = "TARGET_SCOPE", unique = false, nullable = true, insertable = true, updatable = true, length = 50)
 	public java.lang.String getScope() {
 		return this.scope;
 	}
 	
 	public void setScope(java.lang.String value) {
 		this.scope = value;
-	}
+	}*/
 	
 	
 	
@@ -240,7 +240,7 @@ public class Roles extends BaseEntity implements java.io.Serializable{
 	
 	
 
-	@Column(name = "brand", unique = false, nullable = true, insertable = true, updatable = true, length = 50)
+	/*@Column(name = "brand", unique = false, nullable = true, insertable = true, updatable = true, length = 50)
 	public java.lang.String getBrand() {
 		return brand;
 	}
@@ -297,7 +297,7 @@ public class Roles extends BaseEntity implements java.io.Serializable{
 
 	public void setSearchFirstPage(java.lang.String searchFirstPage) {
 		this.searchFirstPage = searchFirstPage;
-	}
+	}*/
 
 	public String toString() {
 		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)

@@ -305,15 +305,15 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		user.setRealname(realname);
 		user.setDescri(descri);
 		
-		user.setBrand(brand);
+		/*user.setBrand(brand);
 		user.setDealerCode(dealerCode);
 		user.setDealerName(dealerName);
 		user.setDealer(dealer);
-		user.setUserType(userType);
+		user.setUserType(userType);*/
 		
 		user.setIvUserId(ivUserId);
 		
-		user.setIsRsscCode(isRsscCode);
+		/*user.setIsRsscCode(isRsscCode);*/
 		
 		try {
 			user.setPassword(SSUtil.encoderPwdByMd5(password));
@@ -352,8 +352,8 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		Users users = this.usersManager.getById(id);
 		request.setAttribute("users", users);
 		
-		request.setAttribute("rsscCodeOptions", this.getRsscCodeOptions(users.getDealer()));
-		request.setAttribute("userType", loginUser.getUserType());
+		/*request.setAttribute("rsscCodeOptions", this.getRsscCodeOptions(users.getDealer()));
+		request.setAttribute("userType", loginUser.getUserType());*/
 		/*request.setAttribute("context", "/ss/Users/userSave.jsp");
 		request.setAttribute("left", systemLeft);
 		request.setAttribute("top", "/top.jsp");
@@ -369,7 +369,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		logger.info("\nusers->[" + users + "]");
 		HttpServletRequest request = this.getRequest();
 		Users loginUser = (Users) request.getSession().getAttribute("loginUser");
-		String loginUserType = loginUser.getUserType();
+		//String loginUserType = loginUser.getUserType();
 		
 		String id = request.getParameter("id");
 		Users user = this.usersManager.getById(id);
@@ -399,7 +399,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		
 		//user.setUsername(username);
 		user.setRealname(realname);
-		logger.info("\nuser->[" + loginUserType + "]");
+		/*logger.info("\nuser->[" + loginUserType + "]");
 		logger.info("\nisJudge->[" + isJudge + "]");
 		if (null != updPwd && "1".equals(updPwd)) {
 			if (!"0".equals(loginUserType) || "1".equals(isJudge)) {
@@ -413,18 +413,18 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 					e.printStackTrace();
 				} 
 			}
-		}
+		}*/
 		user.setDescri(descri);
 		
-		user.setBrand(brand);
+		/*user.setBrand(brand);
 		user.setDealerCode(dealerCode);
 		user.setDealerName(dealerName);
 		user.setDealer(dealer);
-		user.setUserType(userType);
+		user.setUserType(userType);*/
 		
 		user.setIvUserId(ivUserId);
 		
-		user.setIsRsscCode(isRsscCode);
+		/*user.setIsRsscCode(isRsscCode);*/
 		
 		try {
 			if (null != updPwd && "1".equals(updPwd)) {
