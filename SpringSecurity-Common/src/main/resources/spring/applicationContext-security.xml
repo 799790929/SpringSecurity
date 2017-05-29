@@ -30,7 +30,7 @@
     </http>
     
     <!-- 登录验证器 -->
-    <beans:bean id="loginFilter" class="cn.sf.ss.security.MyUsernamePasswordAuthenticationFilter">
+    <beans:bean id="loginFilter" class="com.byron.ss.security.MyUsernamePasswordAuthenticationFilter">
 		<!-- 处理登录 -->
 		<beans:property name="filterProcessesUrl" value="/login"></beans:property>
 		<beans:property name="sessionAuthenticationStrategy" ref="sas"/>
@@ -47,10 +47,10 @@
 	</beans:bean>
 	
 	<!-- 验证不通过处理 -->
-	<beans:bean id="MyAccessDeniedHandler" class="cn.sf.ss.security.MyAccessDeniedHandler"></beans:bean>
+	<beans:bean id="MyAccessDeniedHandler" class="com.byron.ss.security.MyAccessDeniedHandler"></beans:bean>
 	
     <!-- 认证过滤器 -->
-    <beans:bean id="securityFilter" class="cn.sf.ss.security.MyFilterSecurityInterceptor">
+    <beans:bean id="securityFilter" class="com.byron.ss.security.MyFilterSecurityInterceptor">
     	<!-- 用户拥有的权限 -->
     	<beans:property name="authenticationManager" ref="myAuthenticationManager" />
     	<!-- 用户是否拥有所请求资源的权限 -->
@@ -62,12 +62,12 @@
     <authentication-manager alias="myAuthenticationManager">
         <authentication-provider user-service-ref="myUserDetailService" />
     </authentication-manager>
-    <beans:bean id="myAccessDecisionManager" class="cn.sf.ss.security.MyAccessDecisionManager"></beans:bean>
-	<beans:bean id="mySecurityMetadataSource" class="cn.sf.ss.security.MyInvocationSecurityMetadataSource">
+    <beans:bean id="myAccessDecisionManager" class="com.byron.ss.security.MyAccessDecisionManager"></beans:bean>
+	<beans:bean id="mySecurityMetadataSource" class="com.byron.ss.security.MyInvocationSecurityMetadataSource">
 		<beans:constructor-arg name="resourcesDao" ref="resourcesDao"></beans:constructor-arg>
 		<beans:constructor-arg name="rolesDao" ref="rolesDao"></beans:constructor-arg>
 	</beans:bean>
-	<beans:bean id="myUserDetailService" class="cn.sf.ss.security.MyUserDetailService">
+	<beans:bean id="myUserDetailService" class="com.byron.ss.security.MyUserDetailService">
 		<beans:property name="usersDao" ref="usersDao"></beans:property>
 		<beans:property name="groupsDao" ref="groupsDao"></beans:property>
 		<beans:property name="rolesDao" ref="rolesDao"></beans:property>

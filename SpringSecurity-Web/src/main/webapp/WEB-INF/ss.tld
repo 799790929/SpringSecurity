@@ -9,7 +9,7 @@
 	<uri>/ss</uri>
 	<tag>
 		<name>permission</name>
-		<tag-class>cn.sf.ss.tag.PermissionTag</tag-class>
+		<tag-class>com.byron.ss.tag.PermissionTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<name>permission</name>

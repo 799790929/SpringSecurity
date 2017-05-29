@@ -8,6 +8,6 @@
 	<!-- component-scan自动搜索@Component , @Controller , @Service , @Repository等标注的类 -->
 	<!-- 默认值如果适合，该项可以不用修改 -->
 	<!-- <import resource="classpath*:spring/applicationContext-service-ss.xml"/> -->
-	<context:component-scan base-package="cn.**.service" />
+	<context:component-scan base-package="com.byron.**.service" />
 
 </beans>

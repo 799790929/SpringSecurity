@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@page import="cn.sf.ss.model.*" %>
+<%@page import="com.byron.ss.model.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/commons/taglibs.jsp" %>
 <%

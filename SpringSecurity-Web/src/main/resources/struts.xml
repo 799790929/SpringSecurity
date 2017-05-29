@@ -53,7 +53,7 @@
             <result-type name="direct" class="cn.org.rapid_framework.struts2.dispatcher.DirectResult"/>
         </result-types>
         <interceptors>
-        	<interceptor name="sharedRenderVariableInterceptor" class="javacommon.sf.ss.struts2.interceptor.SharedRenderVariableInterceptor"/>
+        	<interceptor name="sharedRenderVariableInterceptor" class="com.byron.ss.common.struts2.interceptor.SharedRenderVariableInterceptor"/>
             <interceptor-stack name="customDefaultCrudStack">
                 <interceptor-ref name="paramsPrepareParamsStack"/>
                 <interceptor-ref name="sharedRenderVariableInterceptor"/>
@@ -66,7 +66,7 @@
     <package name="ssdefault" namespace="/ss" extends="custom-ss-default">
 		
 		<!-- 通过URL访问的路径是 /namesapce/Entity/method.do -->
-		<action name="*/*" method="{2}" class="cn.sf.ss.action.{1}Action">
+		<action name="*/*" method="{2}" class="com.byron.ss.action.{1}Action">
 		    <result name="*" type="direct">通过Action直接返回，这一行无需修改</result>
 		</action>
 					

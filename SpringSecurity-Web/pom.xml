@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>SpringSecurity</artifactId>
-    <groupId>cn.sf.ss</groupId>
+    <groupId>com.byron</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>SpringSecurity-Web</artifactId>
@@ -15,7 +15,7 @@
   
   <dependencies>
   	<dependency>
-      <groupId>cn.sf.ss</groupId>
+      <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Common</artifactId>
       <version>0.0.1</version>  
     </dependency>   
