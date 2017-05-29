@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0 ; padding:0; font-size:12px; text-decoration:none; list-style:none; font-family:"微软雅黑";}
+
+.div5px{ height:5px; overflow:hidden;}
+.div10px{ height:10px; overflow:hidden;}
+.div15px{ height:15px; overflow:hidden;}
+.div20px{ height:20px; overflow:hidden;}
+
+a{ color:#333;}
+a:link{color:#333;}
+a:hover{color:#898989;}
+.blue a:hover{color:#39f;}
+
+.type_a{ color:#fff; font-size:12px;}
+.type_a:link{color:#fff;}
+.type_a:hover{color:#fff;text-decoration:underline;}
+
+.type_b{ color:#333; font-size:14px;}
+.type_b:link{color:#333;}
+.type_b:hover{color:#424242;}
+
+.type_c{ color:red; font-size:12px;}
+.type_c:link{color:red;}
+.type_c:hover{color:#666;}
+
+.type_d{ color:#0b4d98; font-size:12px;}
+.type_d:link{color:#0b4d98;}
+.type_d:hover{color:#666;}
+
+.clear{ clear:both; height:0; overflow:hidden;}
+img{ border:none;}
+
+body{ background:#c5c5c5; }
+
+#box{ width:1366px; height:auto; margin:0 auto; background:#d1d1d1;}
+
+
+#top_box{width:1366px; height:100px;border-bottom:solid 2px #d1d1d1;}
+#top_x{ width:1366px; height:70px; background:#d9d9d9 url(../images/top_bg.jpg) no-repeat;  }
+#top_id{width:350px;height:42px; float:right; margin-top:-55px; line-height:52px; margin-right:10px;}
+#menu_div{ height:30px; background:#e4e4e4;}
+#menu_div ul{ height:28px; padding:0 0 0 25px;}
+#menu_div li{ width:100px; height:28px; line-height:24px; float:left;font-size:14px; margin-right:20px; padding-left:10px;}
+#menu_div li:hover{ background:url(../images/menu_li.jpg) no-repeat 0 2px;}
+#menu_div #li_b{ background:url(../images/menu_li.jpg) no-repeat 0 2px;}
+
+
+
+
+#footer{width:1366px; height:30px; line-height:27px; background:#d1d1d1; color:#666; text-align:center; }
+
+#left_P{ width:150px;}
+#right_P{width:100%;background-color: red}
+
+#left_box{ width:150px; height:auto;background:#efefef; min-height:500px;}
+#left_box h3{ font-size:12px; color:#333; width:135px; height:28px; line-height:28px; padding-left:15px; background:#e4e4e4;}
+#left_box ul{ width:146px; margin:0 auto;}
+#left_box li{ height:28px; background:url(../images/jt01.jpg) no-repeat 20px 11px; padding-left:30px; margin-bottom:5px; line-height:28px;}
+#left_box #li_b{ height:28px; background:url(../images/li_b.jpg) no-repeat;}
+
+
+
+

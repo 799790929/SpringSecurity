@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+*{ margin:0 ; padding:0; font-family:"微软雅黑";font-size:12px; text-decoration:none; list-style:none;}
+
+a{ color:#000;}
+a:link{color:#000;}
+a:hover{color:#333;}
+
+body{ background:#d1d1d1;}
+
+#box{ width:1005px; height:709px; background:#d1d1d1 url(../images/bg.jpg) no-repeat; position:relative; margin:0 auto;}
+
+#login{ width:220px; height:248px; position:absolute; right:110px; top:320px; }
+
+.hh{ width:180px; height:48px; border:none;}
+.input{ width:185px; height:40px; border:none; line-height:40px; margin-left:40px; *height:35px;}
+#btn{ width:220px; height:42px; background:#283539; line-height:42px; font-size:14px; color:#fff; border:none;}
+
+#footer{width:1005px; height:30px; line-height:27px; background:#969696; margin:0 auto; color:#e2e2e4; text-align:center; }
