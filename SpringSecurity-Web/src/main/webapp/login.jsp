@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>上海大众-用户登录</title>
+<title>上海-用户登录</title>
 <link href='<c:url value="/styles/login.css"/>' type="text/css" rel="stylesheet" />
 </head>
 <body>
