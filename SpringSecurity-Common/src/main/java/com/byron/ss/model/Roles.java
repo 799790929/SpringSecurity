@@ -71,7 +71,7 @@ public class Roles extends BaseEntity implements java.io.Serializable{
 	@Length(max=50)
 	private java.lang.String descri;
 	
-	@Length(max=50)
+	/*@Length(max=50)
 	private java.lang.String scope;
 	
 	
@@ -89,7 +89,7 @@ public class Roles extends BaseEntity implements java.io.Serializable{
 	private java.lang.String alarmLevel;
 	
 	private java.lang.String systemFirstPage;
-	private java.lang.String searchFirstPage;
+	private java.lang.String searchFirstPage;*/
 	//columns END
 
 
