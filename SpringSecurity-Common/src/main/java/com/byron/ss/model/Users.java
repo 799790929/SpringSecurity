@@ -80,7 +80,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 	@Length(max=50)
 	private java.lang.String descri;
 	
-	@Length(max=100)
+	/*@Length(max=100)
 	private java.lang.String brand;
 	
 	@Length(max=100)
@@ -98,7 +98,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 	@Length(max=50)
 	private java.lang.String ivUserId;
 	
-	private java.lang.String isRsscCode;
+	private java.lang.String isRsscCode;*/
 	//columns END
 
 
@@ -291,7 +291,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 	
 	public void setUserType(java.lang.String value) {
 		this.userType = value;
-	}*/
+	}
 	
 	@Column(name = "IV_USER_ID", unique = true, nullable = true, insertable = true, updatable = true, length = 60)
 	public java.lang.String getIvUserId() {
@@ -302,7 +302,7 @@ public class Users extends BaseEntity implements java.io.Serializable{
 		this.ivUserId = ivUserId;
 	}
 	
-	/*@Column(name = "is_rssc_code", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
+	@Column(name = "is_rssc_code", unique = false, nullable = true, insertable = true, updatable = true, length = 10)
 	public java.lang.String getIsRsscCode() {
 		return isRsscCode;
 	}

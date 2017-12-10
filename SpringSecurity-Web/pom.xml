@@ -12,19 +12,21 @@
   <packaging>war</packaging>
   <name>SpringSecurity-Web</name>
   <url>http://maven.apache.org</url>
-  
+   
   <dependencies>
   	<dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Common</artifactId>
-      <version>0.0.1</version>  
-    </dependency>   
-    
+      <version>0.0.2</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Common\0.0.2\SpringSecurity-Common-0.0.2.jar</systemPath>
+    </dependency>  
+     
     <dependency> 
 		<groupId>ojdbc</groupId> 
 		<artifactId>ojdbc</artifactId>
 		<version>6</version>  
-	</dependency>
+	</dependency> 
 
     <!-- <dependency> 
       <groupId>junit</groupId>

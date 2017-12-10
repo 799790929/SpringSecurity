@@ -289,7 +289,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		String repassword = request.getParameter("repassword");
 		String descri = request.getParameter("descri");
 		
-		String brand = request.getParameter("brand");
+		/*String brand = request.getParameter("brand");
 		String dealerCode = request.getParameter("dealerCode");
 		String dealerName = request.getParameter("dealerName");
 		String dealer = request.getParameter("dealer");
@@ -297,7 +297,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		
 		String ivUserId = request.getParameter("ivUserId");
 		
-		String isRsscCode = request.getParameter("isRsscCode");
+		String isRsscCode = request.getParameter("isRsscCode");*/
 		
 		Users user = new Users();
 		user.setUsername(username);
@@ -310,7 +310,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		user.setDealer(dealer);
 		user.setUserType(userType);*/
 		
-		user.setIvUserId(ivUserId);
+		// user.setIvUserId(ivUserId);
 		
 		/*user.setIsRsscCode(isRsscCode);*/
 		
@@ -328,11 +328,11 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 				out("{\"success\":false,\"message\":\"数据库中已存在该用户名\"}");
 				return;
 			}
-			list = this.usersManager.getEntityDao().findAllBy("ivUserId", ivUserId);
+			/*list = this.usersManager.getEntityDao().findAllBy("ivUserId", ivUserId);
 			if(null != list && list.size() > 0) {
 				out("{\"success\":false,\"message\":\"数据库中已存在该iv-user-id\"}");
 				return;
-			}
+			}*/
 			usersManager.save(user);
 		} catch(Exception e) {
 			msg = "error";
@@ -421,7 +421,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		user.setDealer(dealer);
 		user.setUserType(userType);*/
 		
-		user.setIvUserId(ivUserId);
+		// user.setIvUserId(ivUserId);
 		
 		/*user.setIsRsscCode(isRsscCode);*/
 		

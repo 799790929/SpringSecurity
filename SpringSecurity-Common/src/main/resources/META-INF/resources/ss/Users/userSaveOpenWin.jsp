@@ -103,11 +103,11 @@ function checkForm(frm) {
 	            <td width="71%"><input name="username" type="text" class="input_a" id="username"/></td>
 	            <td width="13%">&nbsp;</td>
 	          </tr>
-	          <tr>
+	          <!-- <tr>
 	            <td width="16%" align="right" valign="top">iv-user-id</td>
 	            <td width="71%"><input name="ivUserId" type="text" class="input_a" id="ivUserId"/></td>
 	            <td width="13%">&nbsp;</td>
-	          </tr>
+	          </tr> -->
 	          <tr>
 	            <td align="right" valign="top">真实姓名</td>
 	            <td><input name="realname" type="text" class="input_a" id="realname"/></td>
