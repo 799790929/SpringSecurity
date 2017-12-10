@@ -1,13 +1,33 @@
 # SpringSecurity
-
-http://localhost:8080/SpringSecurity-Web/login.jsp
-super/super
-
+1.应用说明
 maven管理jar包
 
 SpringSecurity是基于Spring Struts Hibernate生成的应用.
 该应用封装了Spring-Security,添加了用户角色用户组资源等管理页面.
 读者可根据实际情况扩展或修改jar包(SpringSecurity-Common)
+
+2.在本地安装完成后,启动访问
+http://localhost:8080/SpringSecurity-Web/login.jsp
+super/super
+
+
+3.使用说明
+3.1 登陆需集成SpringSecurity-Common的登陆方式
+对于用户表等的字段,根据需要修改。可修改登陆页面样式,设置首页等
+
+3.2 在页面上集成权限配置
+在自己应用的页面上,加上标签控制权限:
+<%@ taglib uri="/ss" prefix="ss"%>
+...
+<ss:permission permission="/url.do">
+	...
+</ss:permission>
+
+如果登陆用户没用/url.do的权限,则看不到里面的内容(即没用权限)
+
+
+
+
 
 oracle初始化sql:
 --------------------------------------------------------
