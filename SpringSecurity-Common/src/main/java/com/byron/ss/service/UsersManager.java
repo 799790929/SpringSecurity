@@ -103,7 +103,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		if(requestPage > pagesCount && pagesCount != 0) {
 			requestPage = pagesCount;
 		}
-		String sqlOrder = " order by userType,id ";
+		String sqlOrder = " order by id ";
 		
 		start = (int)(requestPage - 1) * pageSize;
 		request.setAttribute("requestPage", requestPage);
