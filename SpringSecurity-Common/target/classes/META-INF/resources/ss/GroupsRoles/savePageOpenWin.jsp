@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
   <base href="<%=basePath%>">
-    <title>大众车辆监管系统</title>
+    <title>添加组角色关系</title>
 <link href="${ctx}/styles/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/styles/second.css" type="text/css" rel="stylesheet" />
 <script src="${ctx}/js/jquery.min.js"></script>

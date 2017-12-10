@@ -107,7 +107,7 @@ var sumbit={
 		$.post('<c:url value="/pages/TsUser/doChange.do"/>', 
 				{}, 
 				function(vals) {
-					var len = vals.indexOf('上海大众-用户登录');
+					var len = vals.indexOf('上海-用户登录');
 					if (len >= 0){
 						dialog.hide();
 						window.location.href="<c:url value='/'/>";

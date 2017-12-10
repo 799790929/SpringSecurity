@@ -34,7 +34,7 @@
 		<!-- packagesToScan可以自动搜索某个package的全部标记@Entity class -->
 		<property name="packagesToScan">
 			<list>
-				<value>cn.**.model</value>
+				<value>com.byron.**.model</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -55,6 +55,6 @@
 	</bean>
 	
 	<!-- component-scan自动搜索@Component , @Controller , @Service , @Repository等标注的类 -->
-	<context:component-scan base-package="cn.**.dao"/>
+	<context:component-scan base-package="com.byron.**.dao"/>
 	
 </beans>

@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>大众车辆监管系统</title>
+    <title>ss系统</title>
 <link href="${ctx}/styles/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/styles/second.css" type="text/css" rel="stylesheet" />
 <script>
@@ -103,11 +103,11 @@ function checkForm(frm) {
 	            <td width="71%"><input name="username" type="text" class="input_a" id="username"/></td>
 	            <td width="13%">&nbsp;</td>
 	          </tr>
-	          <tr>
+	          <!-- <tr>
 	            <td width="16%" align="right" valign="top">iv-user-id</td>
 	            <td width="71%"><input name="ivUserId" type="text" class="input_a" id="ivUserId"/></td>
 	            <td width="13%">&nbsp;</td>
-	          </tr>
+	          </tr> -->
 	          <tr>
 	            <td align="right" valign="top">真实姓名</td>
 	            <td><input name="realname" type="text" class="input_a" id="realname"/></td>

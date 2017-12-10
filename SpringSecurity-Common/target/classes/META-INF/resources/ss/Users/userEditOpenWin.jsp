@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>大众车辆监管系统</title>
+    <title>1210</title>
 <link href="${ctx}/styles/style.css" type="text/css" rel="stylesheet" />
 <link href="${ctx}/styles/second.css" type="text/css" rel="stylesheet" />
 <script>
@@ -89,12 +89,12 @@ function checkForm(frm) {
         <c:if test="${userType!='0'}">
         <input name="username" readOnly value="<c:out value="${users.username}"/>" type="hidden" class="input_a" />
         <input name="realname" value="<c:out value="${users.realname}"/>" type="hidden" class="input_a" />
-        <input name="brand" value="<c:out value="${users.brand}"/>" <c:if test="${userType!='0'}"> readOnly </c:if> type="hidden" class="input_a" />
+        <%-- <input name="brand" value="<c:out value="${users.brand}"/>" <c:if test="${userType!='0'}"> readOnly </c:if> type="hidden" class="input_a" />
         <input name="dealerCode" value="<c:out value="${users.dealerCode}"/>" <c:if test="${userType!='0'}"> readOnly </c:if> type="hidden" class="input_a" />
         <input name="dealerName" value="<c:out value="${users.dealerName}"/>" <c:if test="${userType!='0'}"> readOnly </c:if> type="hidden" class="input_a" />
         <input name="dealer" value="<c:out value="${users.dealer}"/>" <c:if test="${userType!='0'}"> readOnly </c:if> type="hidden" class="input_a" />
         <input name="userType" value="${users.userType }" type="hidden"/>
-        <textarea name="descri" class="input_b" style="display:none;">${users.descri}</textarea>
+         --%><textarea name="descri" class="input_b" style="display:none;">${users.descri}</textarea>
         </c:if>
         
         
