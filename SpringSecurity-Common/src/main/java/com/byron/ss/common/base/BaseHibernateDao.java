@@ -1,23 +1,11 @@
 package com.byron.ss.common.base;
 
-import static cn.org.rapid_framework.util.SqlRemoveUtils.removeFetchKeyword;
-import static cn.org.rapid_framework.util.SqlRemoveUtils.removeOrders;
-import static cn.org.rapid_framework.util.SqlRemoveUtils.removeSelect;
-
 import java.io.Serializable;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import javacommon.xsqlbuilder.SafeSqlProcesser;
-import javacommon.xsqlbuilder.SafeSqlProcesserFactory;
-import javacommon.xsqlbuilder.XsqlBuilder;
-import javacommon.xsqlbuilder.XsqlBuilder.XsqlFilterResult;
-import javacommon.xsqlbuilder.safesql.DirectReturnSafeSqlProcesser;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
@@ -29,19 +17,12 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.dialect.Dialect;
-import org.hibernate.impl.SessionFactoryImpl;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.HibernateCallback;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.util.StringUtils;
-
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.page.PageRequest;
 
 /**
  * @author badqiu
@@ -69,7 +50,7 @@ public abstract class BaseHibernateDao<E,PK extends Serializable> extends Hibern
 	 * @param pageRequest
 	 * @return
 	 */
-	public Page findAll(final PageRequest pageRequest) {
+	/*public Page findAll(final PageRequest pageRequest) {
 		return (Page)getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				
@@ -116,10 +97,10 @@ public abstract class BaseHibernateDao<E,PK extends Serializable> extends Hibern
 			System.err.println(BaseHibernateDao.class.getSimpleName()+".getXsqlBuilder(): 故意报错,你未开启Sql安全过滤,单引号等转义字符在拼接sql时需要转义,不然会导致Sql注入攻击的安全问题，请修改源码使用new XsqlBuilder(SafeSqlProcesserFactory.getDataBaseName())开启安全过滤");
 		}
 		return builder;
-	}
+	}*/
 	
 	static class PageQueryUtils {
-		private static Page pageQuery(HibernateTemplate template,final PageRequest pageRequest, final XsqlFilterResult queryXsqlResult, final XsqlFilterResult countQueryXsqlResult) {
+		/*private static Page pageQuery(HibernateTemplate template,final PageRequest pageRequest, final XsqlFilterResult queryXsqlResult, final XsqlFilterResult countQueryXsqlResult) {
 			return (Page)template.execute(new HibernateCallback() {
 				public Object doInHibernate(Session session) throws HibernateException, SQLException {
 					
@@ -139,7 +120,7 @@ public abstract class BaseHibernateDao<E,PK extends Serializable> extends Hibern
 				page.setResult(query.setFirstResult(page.getFirstResult()).setMaxResults(page.getPageSize()).list());
 			}
 			return page;
-		}
+		}*/
 	
 		public static Query setQueryParameters(Query q,Object params) {
 			q.setProperties(params);

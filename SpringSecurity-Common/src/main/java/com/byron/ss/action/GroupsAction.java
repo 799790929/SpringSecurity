@@ -8,21 +8,15 @@
 package com.byron.ss.action;
 
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.web.scope.Flash;
-import cn.org.rapid_framework.web.util.HttpUtils;
 
 import com.byron.ss.common.base.BaseStruts2Action;
 import com.byron.ss.model.Groups;
 import com.byron.ss.service.GroupsManager;
 import com.byron.ss.service.GroupsRolesManager;
 import com.byron.ss.service.UsersGroupsManager;
-import com.byron.ss.vo.query.GroupsQuery;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
@@ -89,7 +83,7 @@ public class GroupsAction extends BaseStruts2Action implements Preparable,ModelD
 	}
 	
 	/** 执行搜索 */
-	public String list() {
+	/*public String list() {
 		GroupsQuery query = newQuery(GroupsQuery.class,DEFAULT_SORT_COLUMNS);
 		
 		Page page = groupsManager.findPage(query);
@@ -99,8 +93,7 @@ public class GroupsAction extends BaseStruts2Action implements Preparable,ModelD
 		String ssPage = "/ss/Groups/list.jsp";
 		this.setMainPage(ssPage);
 		return indexPage;
-//		return LIST_JSP;
-	}
+	}*/
 	
 	/** 查看对象*/
 	public String show() {
@@ -119,31 +112,28 @@ public class GroupsAction extends BaseStruts2Action implements Preparable,ModelD
 	}
 	
 	/** 保存新增对象 */
-	public String save() {
+	/*public String save() {
 		groupsManager.save(groups);
 		Flash.current().success(CREATED_SUCCESS); //存放在Flash中的数据,在下一次http请求中仍然可以读取数据,error()用于显示错误消息
 		return list();
-//		return LIST_ACTION;
-	}
+	}*/
 	
 	/**进入更新页面*/
 	public String edit() {
 		String ssPage = "/ss/Groups/edit.jsp";
 		this.setMainPage(ssPage);
 		return indexPage;
-//		return EDIT_JSP;
 	}
 	
 	/**保存更新对象*/
-	public String update() {
+	/*public String update() {
 		groupsManager.update(this.groups);
 		Flash.current().success(UPDATE_SUCCESS);
 		return list();
-//		return LIST_ACTION;
-	}
+	}*/
 	
 	/**删除对象*/
-	public String delete() {
+	/*public String delete() {
 		for(int i = 0; i < items.length; i++) {
 			Hashtable params = HttpUtils.parseQueryString(items[i]);
 			java.lang.String id = new java.lang.String((String)params.get("id"));
@@ -153,8 +143,7 @@ public class GroupsAction extends BaseStruts2Action implements Preparable,ModelD
 		}
 		Flash.current().success(DELETE_SUCCESS);
 		return list();
-//		return LIST_ACTION;
-	}
+	}*/
 
 	public String doList() {
 		HttpServletRequest request = this.getRequest();

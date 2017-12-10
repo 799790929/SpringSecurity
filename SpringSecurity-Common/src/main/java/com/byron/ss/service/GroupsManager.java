@@ -14,14 +14,11 @@ import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.GroupsDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.GroupsRoles;
-import com.byron.ss.vo.query.GroupsQuery;
 
 
 /**
@@ -51,10 +48,10 @@ public class GroupsManager extends BaseManager<Groups,java.lang.String>{
 	public void setGroupsRolesManager(GroupsRolesManager groupsRolesManager) {
 		this.groupsRolesManager = groupsRolesManager;
 	}
-	@Transactional(readOnly=true)
+	/*@Transactional(readOnly=true)
 	public Page findPage(GroupsQuery query) {
 		return groupsDao.findPage(query);
-	}
+	}*/
 	
 	/**
 	 * 根据用户id删除相应的用户及用户组关系

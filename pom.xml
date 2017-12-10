@@ -191,23 +191,13 @@
 	<!-- rapid-framework -->
 	<!-- <dependency>
 		<groupId>com.googlecode.rapid-framework</groupId>
-		<artifactId>rapid-core</artifactId>
-		<version>4.0.4</version>
-	</dependency> -->
-	<dependency>
-		<groupId>com.googlecode.rapid-framework</groupId>
 		<artifactId>rapid-framework</artifactId>
 		<version>3.9.3.20100923</version>
-	</dependency>
-	<dependency>
+	</dependency> -->
+	<!-- <dependency>
 		<groupId>com.googlecode.rapid-framework</groupId>
 		<artifactId>xsqlbuilder</artifactId>
 		<version>1.0</version>
-	</dependency>
-	<!-- <dependency>
-		<groupId>com.googlecode.rapid-framework</groupId>
-		<artifactId>rapid-generator</artifactId>
-		<version>4.0.4</version>
 	</dependency> -->
 	
 	<!--  -->

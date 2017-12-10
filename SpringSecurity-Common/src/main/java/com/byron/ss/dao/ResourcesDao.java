@@ -7,19 +7,14 @@
 
 package com.byron.ss.dao;
 
-import static cn.org.rapid_framework.util.ObjectUtils.isNotEmpty;
-
 import java.util.List;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.Roles;
-import com.byron.ss.vo.query.ResourcesQuery;
 
 @Repository
 public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
@@ -28,7 +23,7 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
 		return Resources.class;
 	}
 	
-	public Page findPage(ResourcesQuery query) {
+	/*public Page findPage(ResourcesQuery query) {
         //XsqlBuilder syntax,please see http://code.google.com/p/rapid-xsqlbuilder
         // [column]为字符串拼接, {column}为使用占位符. [column]为使用字符串拼接,如username='[username]',偷懒时可以使用字符串拼接 
         // [column] 为PageRequest的属性
@@ -69,7 +64,7 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
         }	
         
 		return pageQuery(sql,query);
-	}
+	}*/
 	
 	final static String rss_role_id = "";//资源表
 	final static String rss_pk_resource = "ID_RESOURCE";//资源表id

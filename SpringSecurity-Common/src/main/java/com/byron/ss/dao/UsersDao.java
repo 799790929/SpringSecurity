@@ -7,17 +7,12 @@
 
 package com.byron.ss.dao;
 
-import static cn.org.rapid_framework.util.ObjectUtils.isNotEmpty;
-
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Users;
-import com.byron.ss.vo.query.UsersQuery;
 
 @Repository
 public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
@@ -26,7 +21,7 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 		return Users.class;
 	}
 	
-	public Page findPage(UsersQuery query) {
+	/*public Page findPage(UsersQuery query) {
         //XsqlBuilder syntax,please see http://code.google.com/p/rapid-xsqlbuilder
         // [column]为字符串拼接, {column}为使用占位符. [column]为使用字符串拼接,如username='[username]',偷懒时可以使用字符串拼接 
         // [column] 为PageRequest的属性
@@ -55,7 +50,7 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
         }	
         
 		return pageQuery(sql,query);
-	}
+	}*/
 	
 	public Users findByName(String name) {
 		List<Users> objs = this.findBy("username", name, "");

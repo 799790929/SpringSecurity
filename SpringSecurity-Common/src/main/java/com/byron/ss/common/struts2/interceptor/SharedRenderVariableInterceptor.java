@@ -7,9 +7,6 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts2.ServletActionContext;
-
-import cn.org.rapid_framework.web.httpinclude.HttpInclude;
 
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
@@ -46,7 +43,7 @@ public class SharedRenderVariableInterceptor implements Interceptor {
 		vs.set("share_current_login_username", "badqiu");
 		
 		//为freemarker,velocity提供<jsp:include page="/some/page.jsp"/>功能,使用示例: ${httpInclude.include("/servlet/header.do")};
-		vs.set("httpInclude",new HttpInclude(ServletActionContext.getRequest(),ServletActionContext.getResponse()));
+		//vs.set("httpInclude",new HttpInclude(ServletActionContext.getRequest(),ServletActionContext.getResponse()));
 	}
 
 	//注意,如果变量是global,请尽量增加global前缀

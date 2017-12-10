@@ -21,7 +21,7 @@ import org.apache.commons.beanutils.converters.SqlDateConverter;
 import org.apache.commons.beanutils.converters.SqlTimeConverter;
 import org.apache.commons.beanutils.converters.SqlTimestampConverter;
 
-import cn.org.rapid_framework.beanutils.converter.StringConverter;
+import com.byron.ss.util.StringConverter;
 /**
  * 注册Converter, 用于apache commons BeanUtils.copyProperties()方法中的class类型转换;
  * 可以修改此处代码以添加新的Converter

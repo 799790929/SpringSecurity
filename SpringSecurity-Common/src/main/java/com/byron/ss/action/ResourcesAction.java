@@ -8,20 +8,14 @@
 package com.byron.ss.action;
 
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.web.scope.Flash;
-import cn.org.rapid_framework.web.util.HttpUtils;
 
 import com.byron.ss.common.base.BaseStruts2Action;
 import com.byron.ss.model.Resources;
 import com.byron.ss.service.ResourcesManager;
 import com.byron.ss.service.RolesResourcesManager;
-import com.byron.ss.vo.query.ResourcesQuery;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
@@ -84,7 +78,7 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 	}
 	
 	/** 执行搜索 */
-	public String list() {
+	/*public String list() {
 		ResourcesQuery query = newQuery(ResourcesQuery.class,DEFAULT_SORT_COLUMNS);
 		
 		Page page = resourcesManager.findPage(query);
@@ -95,7 +89,7 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 		this.setMainPage(ssPage);
 		return indexPage;
 //		return LIST_JSP;
-	}
+	}*/
 	
 	/** 查看对象*/
 	public String show() {
@@ -114,12 +108,12 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 	}
 	
 	/** 保存新增对象 */
-	public String save() {
+	/*public String save() {
 		resourcesManager.save(resources);
 		Flash.current().success(CREATED_SUCCESS); //存放在Flash中的数据,在下一次http请求中仍然可以读取数据,error()用于显示错误消息
 		return list();
 //		return LIST_ACTION;
-	}
+	}*/
 	
 	/**进入更新页面*/
 	public String edit() {
@@ -130,15 +124,15 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 	}
 	
 	/**保存更新对象*/
-	public String update() {
+	/*public String update() {
 		resourcesManager.update(this.resources);
 		Flash.current().success(UPDATE_SUCCESS);
 		return list();
 //		return LIST_ACTION;
-	}
+	}*/
 	
 	/**删除对象*/
-	public String delete() {
+	/*public String delete() {
 		for(int i = 0; i < items.length; i++) {
 			Hashtable params = HttpUtils.parseQueryString(items[i]);
 			java.lang.String id = new java.lang.String((String)params.get("id"));
@@ -148,7 +142,7 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 		Flash.current().success(DELETE_SUCCESS);
 		return list();
 //		return LIST_ACTION;
-	}
+	}*/
 
 	public String doList() {
 		HttpServletRequest request = this.getRequest();

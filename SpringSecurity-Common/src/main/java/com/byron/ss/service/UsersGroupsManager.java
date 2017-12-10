@@ -17,8 +17,6 @@ import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.common.util.HibernateToolsUtil;
@@ -26,7 +24,6 @@ import com.byron.ss.dao.UsersGroupsDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.Users;
 import com.byron.ss.model.UsersGroups;
-import com.byron.ss.vo.query.UsersGroupsQuery;
 
 
 /**
@@ -61,10 +58,10 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 		return this.usersGroupsDao;
 	}
 	
-	@Transactional(readOnly=true)
+	/*@Transactional(readOnly=true)
 	public Page findPage(UsersGroupsQuery query) {
 		return usersGroupsDao.findPage(query);
-	}
+	}*/
 	
 
 	

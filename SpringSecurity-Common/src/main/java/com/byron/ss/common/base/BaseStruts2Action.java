@@ -9,15 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
-import org.springframework.util.Assert;
-
-import cn.org.rapid_framework.beanutils.BeanUtils;
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.page.PageRequest;
-import cn.org.rapid_framework.util.ObjectUtils;
 
 import com.byron.ss.common.util.ConvertRegisterHelper;
-import com.byron.ss.common.util.PageRequestFactory;
+import com.byron.ss.util.ObjectUtils;
 import com.opensymphony.xwork2.ActionSupport;
 
 public abstract class BaseStruts2Action extends ActionSupport implements RequestAware {
@@ -43,27 +37,27 @@ public abstract class BaseStruts2Action extends ActionSupport implements Request
 		ConvertRegisterHelper.registerConverters();
 	}
 	
-	public void copyProperties(Object target,Object source) {
+	/*public void copyProperties(Object target,Object source) {
 		BeanUtils.copyProperties(target, source);
 	}
 
 	public <T> T copyProperties(Class<T> destClass,Object orig) {
 		return BeanUtils.copyProperties(destClass, orig);
-	}
+	}*/
 	
 	public void setRequest(Map request) {
 		this.requestMap = request;
 	}
 
-	public void savePage(Page page,PageRequest pageRequest){
+	/*public void savePage(Page page,PageRequest pageRequest){
 		savePage("",page,pageRequest);
-	}
+	}*/
 	
 	/**
 	 * 用于一个页面有多个extremeTable是使用
 	 * @param tableId 等于extremeTable的tableId属性
 	 */
-	public void savePage(String tableId,Page page,PageRequest pageRequest){
+	/*public void savePage(String tableId,Page page,PageRequest pageRequest){
 		Assert.notNull(tableId,"tableId must be not null");
 		Assert.notNull(page,"page must be not null");
 		
@@ -76,7 +70,7 @@ public abstract class BaseStruts2Action extends ActionSupport implements Request
 	public <T extends PageRequest> T newQuery(Class<T> queryClazz,String defaultSortColumns){
 		PageRequest query = PageRequestFactory.bindPageRequest(org.springframework.beans.BeanUtils.instantiateClass(queryClazz),ServletActionContext.getRequest(),defaultSortColumns);
 		return (T)query;
-    }
+    }*/
 	
 	public boolean isNullOrEmptyString(Object o) {
 		return ObjectUtils.isNullOrEmptyString(o);

@@ -26,14 +26,12 @@
 
 	<package name="custom-default" extends="struts-default">
         <result-types>
-            <result-type name="direct" class="cn.org.rapid_framework.struts2.dispatcher.DirectResult"/>
+            <result-type name="direct" class="com.byron.ss.struts2.dispatcher.DirectResult"/>
         </result-types>
         <interceptors>
         	<!-- 提供视图渲染的共享变量拦截器 -->
-        	<!-- <interceptor name="sharedRenderVariableInterceptor" class="javacommon.struts2.interceptor.SharedRenderVariableInterceptor"/> -->
             <interceptor-stack name="customDefaultCrudStack">
                 <interceptor-ref name="paramsPrepareParamsStack"/>
-                <!-- <interceptor-ref name="sharedRenderVariableInterceptor"/> -->
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="customDefaultCrudStack"/>
@@ -47,7 +45,7 @@
     
     <package name="custom-ss-default" extends="struts-default">
         <result-types>
-            <result-type name="direct" class="cn.org.rapid_framework.struts2.dispatcher.DirectResult"/>
+            <result-type name="direct" class="com.byron.ss.struts2.dispatcher.DirectResult"/>
         </result-types>
         <interceptors>
         	<interceptor name="sharedRenderVariableInterceptor" class="com.byron.ss.common.struts2.interceptor.SharedRenderVariableInterceptor"/>

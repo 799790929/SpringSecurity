@@ -10,13 +10,10 @@ package com.byron.ss.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.RolesDao;
 import com.byron.ss.model.Roles;
-import com.byron.ss.vo.query.RolesQuery;
 
 
 /**
@@ -38,9 +35,9 @@ public class RolesManager extends BaseManager<Roles,java.lang.String>{
 		return this.rolesDao;
 	}
 	
-	@Transactional(readOnly=true)
+	/*@Transactional(readOnly=true)
 	public Page findPage(RolesQuery query) {
 		return rolesDao.findPage(query);
-	}
+	}*/
 	
 }

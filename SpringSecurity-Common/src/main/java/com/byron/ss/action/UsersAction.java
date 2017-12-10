@@ -7,10 +7,7 @@
 
 package com.byron.ss.action;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,16 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.web.scope.Flash;
-import cn.org.rapid_framework.web.util.HttpUtils;
-
 import com.byron.ss.common.base.BaseStruts2Action;
 import com.byron.ss.model.Users;
 import com.byron.ss.service.UsersGroupsManager;
 import com.byron.ss.service.UsersManager;
 import com.byron.ss.util.SSUtil;
-import com.byron.ss.vo.query.UsersQuery;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
@@ -91,7 +83,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 	}
 	
 	/** 执行搜索 */
-	public String list() {
+	/*public String list() {
 		UsersQuery query = newQuery(UsersQuery.class,DEFAULT_SORT_COLUMNS);
 		
 		Page page = usersManager.findPage(query);
@@ -102,7 +94,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		this.setMainPage(ssPage);
 		return indexPage;
 //		return LIST_JSP;
-	}
+	}*/
 	
 	/** 查看对象*/
 	public String show() {
@@ -121,7 +113,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 	}
 	
 	/** 保存新增对象 */
-	public String save() {
+	/*public String save() {
 		try {
 			String pwd = SSUtil.encoderPwdByMd5(users.getPassword());
 			users.setPassword(pwd);
@@ -135,7 +127,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		Flash.current().success(CREATED_SUCCESS); //存放在Flash中的数据,在下一次http请求中仍然可以读取数据,error()用于显示错误消息
 		return list();
 //		return LIST_ACTION;
-	}
+	}*/
 	
 	/**进入更新页面*/
 	public String edit() {
@@ -146,7 +138,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 	}
 	
 	/**保存更新对象*/
-	public String update() {
+	/*public String update() {
 		try {
 			String pwd = SSUtil.encoderPwdByMd5(users.getPassword());
 			users.setPassword(pwd);
@@ -162,7 +154,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 //		return LIST_ACTION;
 	}
 	
-	/**删除对象*/
+	*//**删除对象*//*
 	public String delete() {
 		for(int i = 0; i < items.length; i++) {
 			Hashtable params = HttpUtils.parseQueryString(items[i]);
@@ -173,7 +165,7 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		Flash.current().success(DELETE_SUCCESS);
 		return list();
 //		return LIST_ACTION;
-	}
+	}*/
 	
 	public String doLogin() {
 		HttpServletRequest request = this.getRequest();

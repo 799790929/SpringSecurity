@@ -14,14 +14,11 @@ import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.ResourcesDao;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.RolesResources;
-import com.byron.ss.vo.query.ResourcesQuery;
 
 
 /**
@@ -48,10 +45,10 @@ public class ResourcesManager extends BaseManager<Resources,java.lang.String>{
 		this.rolesResourcesManager = rolesResourcesManager;
 	}
 	
-	@Transactional(readOnly=true)
+	/*@Transactional(readOnly=true)
 	public Page findPage(ResourcesQuery query) {
 		return resourcesDao.findPage(query);
-	}
+	}*/
 	
 	/**
 	 * 根据资源id删除相应的角色资源关系

@@ -17,8 +17,6 @@ import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.org.rapid_framework.page.Page;
-
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.common.util.HibernateToolsUtil;
@@ -26,7 +24,6 @@ import com.byron.ss.dao.RolesResourcesDao;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.Roles;
 import com.byron.ss.model.RolesResources;
-import com.byron.ss.vo.query.RolesResourcesQuery;
 
 
 /**
@@ -60,10 +57,10 @@ public class RolesResourcesManager extends BaseManager<RolesResources,java.lang.
 		return this.rolesResourcesDao;
 	}
 	
-	@Transactional(readOnly=true)
+	/*@Transactional(readOnly=true)
 	public Page findPage(RolesResourcesQuery query) {
 		return rolesResourcesDao.findPage(query);
-	}
+	}*/
 	
 	public void doDeleteByRoles(String roleid) {
 		List<RolesResources> rolesResources = this.getEntityDao().findBy("roleId", roleid, "");

@@ -11,12 +11,9 @@ import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpUtils;
 
 import org.apache.log4j.Logger;
-
-import cn.org.rapid_framework.page.Page;
-import cn.org.rapid_framework.web.scope.Flash;
-import cn.org.rapid_framework.web.util.HttpUtils;
 
 import com.byron.ss.common.base.BaseStruts2Action;
 import com.byron.ss.model.Groups;
@@ -93,13 +90,13 @@ public class GroupsRolesAction extends BaseStruts2Action implements Preparable,M
 	}
 	
 	/** 执行搜索 */
-	public String list() {
+	/*public String list() {
 		GroupsRolesQuery query = newQuery(GroupsRolesQuery.class,DEFAULT_SORT_COLUMNS);
 		
 		Page page = groupsRolesManager.findPage(query);
 		savePage(page,query);
 		return LIST_JSP;
-	}
+	}*/
 	
 	/** 查看对象*/
 	public String show() {
@@ -112,11 +109,11 @@ public class GroupsRolesAction extends BaseStruts2Action implements Preparable,M
 	}
 	
 	/** 保存新增对象 */
-	public String save() {
+	/*public String save() {
 		groupsRolesManager.save(groupsRoles);
 		Flash.current().success(CREATED_SUCCESS); //存放在Flash中的数据,在下一次http请求中仍然可以读取数据,error()用于显示错误消息
 		return LIST_ACTION;
-	}
+	}*/
 	
 	/**进入更新页面*/
 	public String edit() {
@@ -124,13 +121,13 @@ public class GroupsRolesAction extends BaseStruts2Action implements Preparable,M
 	}
 	
 	/**保存更新对象*/
-	public String update() {
+	/*public String update() {
 		groupsRolesManager.update(this.groupsRoles);
 		Flash.current().success(UPDATE_SUCCESS);
 		return LIST_ACTION;
 	}
 	
-	/**删除对象*/
+	*//**删除对象*//*
 	public String delete() {
 		for(int i = 0; i < items.length; i++) {
 			Hashtable params = HttpUtils.parseQueryString(items[i]);
@@ -139,7 +136,7 @@ public class GroupsRolesAction extends BaseStruts2Action implements Preparable,M
 		}
 		Flash.current().success(DELETE_SUCCESS);
 		return LIST_ACTION;
-	}
+	}*/
 
 
 	public String initPage() {

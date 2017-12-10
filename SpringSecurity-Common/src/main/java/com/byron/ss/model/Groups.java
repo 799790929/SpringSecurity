@@ -21,9 +21,8 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.Length;
 
-import cn.org.rapid_framework.util.DateConvertUtils;
-
 import com.byron.ss.common.base.BaseEntity;
+import com.byron.ss.util.DateConvertUtils;
 
 
 /**
