@@ -58,7 +58,7 @@ var rolek={
 		//window.open('<c:url value="/pages/TtCarInfo/gotoPage.do"/>?pageFlag=2&pkTtCarInfo='+id);
 		$.post(url,'', 
 				function(vals) {
-					var len = vals.indexOf('上海大众-用户登录');
+					var len = vals.indexOf('上海-用户登录');
 					if (len >= 0){
 						window.location.href="<c:url value='/'/>";
 					} else {
@@ -92,7 +92,7 @@ var rolek={
 	doEditPage:function(url) {
 		$.post(url,'', 
 				function(vals) {
-					var len = vals.indexOf('上海大众-用户登录');
+					var len = vals.indexOf('上海-用户登录');
 					if (len >= 0){
 						window.location.href="<c:url value='/'/>";
 					} else {
