@@ -1,0 +1,246 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 127.0.0.1_mysql_db
+Source Server Version : 50533
+Source Host           : 127.0.0.1:3306
+Source Database       : ss
+
+Target Server Type    : MYSQL
+Target Server Version : 50533
+File Encoding         : 65001
+
+Date: 2017-12-12 07:53:53
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for tr_group_role
+-- ----------------------------
+DROP TABLE IF EXISTS `tr_group_role`;
+CREATE TABLE `tr_group_role` (
+  `ID_GROUP_ROLE` varchar(32) NOT NULL,
+  `GRP_ID` varchar(32) DEFAULT NULL COMMENT '组表ID',
+  `ROLE_ID` varchar(32) DEFAULT NULL COMMENT '角色表ID',
+  `GROUP_NAME` varchar(50) DEFAULT NULL COMMENT '组名',
+  `ROLE_NAME` varchar(50) DEFAULT NULL COMMENT '角色名',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  PRIMARY KEY (`ID_GROUP_ROLE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组角色关联表';
+
+-- ----------------------------
+-- Records of tr_group_role
+-- ----------------------------
+INSERT INTO `tr_group_role` VALUES ('297e431c48a675570148a6cd8d5e000d', '402881ec48927065014892712aa10002', '402881e948a669ef0148a6766bde0003', 'g2', '主管', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402881e44904bb0c014904d3cba10017', '402881e44904bb0c014904cf46fe0008', '402881e44904bb0c014904d1934e0015', '管理员', '管理员', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402881e4491947b4014919565dbf0008', '402881e44904bb0c014904d01565000c', '402881e44904bb0c014904d11a270011', '经销商', '经销商', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402881e4491947b40149195688800009', '402881e44904bb0c014904d03213000d', '402881e44904bb0c014904d0fcbb0010', '安吉物流领导', '安吉物流领导', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402881e4491947b401491956b525000a', '402881e44904bb0c014904cff0ff000b', '402881e44904bb0c014904d138750012', '大众计划员', '大众计划员', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402881ec4892106b01489211f7c20007', '402881ec4892106b014892113d800002', '402881ec4892106b0148921192a30004', 'g1', 'r1', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402882e45c541fd5015c5422931d0005', '402882e45c541fd5015c5421fbf40002', '402882e45c541fd5015c542239010003', '用户管理', '用户管理', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('402882e45c5442fa015c544d409b0005', '402882e45c5442fa015c544c93300002', '402882e45c5442fa015c544cd18f0003', '群组管理', '群组管理', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('4028e59a49176e330149176fd10b0003', '4028e59a49176e330149176f001a0001', '402881e44904bb0c014904d1934e0015', '管理员', '管理员', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('8a82e58b49598339014959ca1d690003', '402881e44904bb0c014904cfb5b0000a', '402881e44904bb0c014904d157d50013', '大众品牌经理', '大众品牌经理', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('8a82e58b495e9d6601495ef9594d0018', '402881e44904bb0c014904d089bf000e', '402881e44904bb0c014904d0d8c6000f', '安吉物流员工', '安吉物流员工', null, null, null, null);
+INSERT INTO `tr_group_role` VALUES ('8a8aa8954947a4df014947a764440001', '402881e44904bb0c014904cf78db0009', '402881e44904bb0c014904d174920014', '大众科长', '大众科长', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for tr_role_resource
+-- ----------------------------
+DROP TABLE IF EXISTS `tr_role_resource`;
+CREATE TABLE `tr_role_resource` (
+  `ID_ROLE_RESOURCE` varchar(32) NOT NULL,
+  `RESOURCE_ID` varchar(32) DEFAULT NULL COMMENT '资源ID',
+  `ROLE_ID` varchar(32) DEFAULT NULL COMMENT '角色ID',
+  `RESOURCE_NAME` varchar(50) DEFAULT NULL COMMENT '资源名称',
+  `ROLE_NAME` varchar(50) DEFAULT NULL COMMENT '角色名称',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  PRIMARY KEY (`ID_ROLE_RESOURCE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色资源表';
+
+-- ----------------------------
+-- Records of tr_role_resource
+-- ----------------------------
+INSERT INTO `tr_role_resource` VALUES ('402882e45c541fd5015c5422ce320006', '8a8aa8f8495096a3014950bb4e15001f', '402882e45c541fd5015c542239010003', '系统管理-用户管理', '用户管理', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('402882e45c54a460015c54a583ed0001', '8a8aa8f8495096a3014950bb4e15001f', '402882e45c5442fa015c544cd18f0003', '系统管理-用户管理', '群组管理', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('402882e45c54a460015c54a5840d0002', '8a8aa8f8495096a3014950bb74980020', '402882e45c5442fa015c544cd18f0003', '系统管理-群组管理', '群组管理', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b7ca0003', '8a8aa8f8495096a3014950bbe7a80023', '402881e44904bb0c014904d1934e0015', '系统管理-用户群组管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b7e90004', '8a8aa8f8495096a3014950baa09c001a', '402881e44904bb0c014904d1934e0015', '系统管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b8080005', '8a8aa8f8495096a3014950bc0d540024', '402881e44904bb0c014904d1934e0015', '系统管理-群租角色管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b911000f', '8a8aa8f8495096a3014950bb4e15001f', '402881e44904bb0c014904d1934e0015', '系统管理-用户管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b9210010', '8a8aa8f8495096a3014950bb9c0c0021', '402881e44904bb0c014904d1934e0015', '系统管理-角色管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1b9cd0017', '8a8aa8f8495096a3014950bb74980020', '402881e44904bb0c014904d1934e0015', '系统管理-群组管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1ba97001f', '8a8aa8f8495096a3014950bbbe1e0022', '402881e44904bb0c014904d1934e0015', '系统管理-权限管理', '管理员', null, null, null, null);
+INSERT INTO `tr_role_resource` VALUES ('8a8aa8f84950d051014950d1bb630023', '8a8aa8f8495096a3014950bc2db00025', '402881e44904bb0c014904d1934e0015', '系统管理-角色权限管理', '管理员', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for tr_user_group
+-- ----------------------------
+DROP TABLE IF EXISTS `tr_user_group`;
+CREATE TABLE `tr_user_group` (
+  `ID_USER_GROUP` varchar(32) NOT NULL,
+  `USER_ID` varchar(32) DEFAULT NULL COMMENT '用户表ID',
+  `GRP_ID` varchar(32) DEFAULT NULL COMMENT '组表ID',
+  `USER_NAME` varchar(50) DEFAULT NULL COMMENT '用户名',
+  `GROUP_NAME` varchar(50) DEFAULT NULL COMMENT '组名',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  PRIMARY KEY (`ID_USER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户组关联表';
+
+-- ----------------------------
+-- Records of tr_user_group
+-- ----------------------------
+INSERT INTO `tr_user_group` VALUES ('40288124498490ca014984991feb0002', '40288124498490ca01498496aede0001', '402881e44904bb0c014904d01565000c', 'jingxiaoshang', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e44904bb0c014904d38faa0016', '402881e44904bb0c014904cda42f0001', '402881e44904bb0c014904cf46fe0008', 'super', '管理员', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e4491947b40149195583560002', '402881e44904bb0c014904ce1a520003', '402881e44904bb0c014904cfb5b0000a', 'pinpaijingli', '大众品牌经理', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e4491947b4014919560de40006', '402881e44904bb0c014904cec0ff0007', '402881e44904bb0c014904d089bf000e', 'anjiworker', '安吉物流员工', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e748da7f460148da88c71f0003', '297e431c48a675570148a6eb90050017', '297e431c48a675570148a6fb0a4e0032', 'q3', '用户', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e748da7f460148da88c8670004', '297e431c48a675570148a6eb47cc0016', '297e431c48a675570148a6fb0a4e0032', 'q2', '用户', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402881e748da7f460148da891f970005', '402877814896b907014896d0e0a00006', '297e431c48a675570148a6fb0a4e0032', 'u3', '用户', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402882e45c541fd5015c5422724f0004', '402882e45c541fd5015c5421d0a00001', '402882e45c541fd5015c5421fbf40002', '用户管理', '用户管理', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('402882e45c5442fa015c544d04f70004', '402882e45c5442fa015c544c1e9d0001', '402882e45c5442fa015c544c93300002', 'groupmgr', '群组管理', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('4028e59a49176e330149176fab9d0002', '402881e44904bb0c014904cda42f0001', '4028e59a49176e330149176f001a0001', 'super', '管理员', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a82e58b494ae15001494bb39fcd00d2', '402881e44904bb0c014904ce99380006', '402881e44904bb0c014904d03213000d', 'anjileader', '安吉物流领导', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a82e58b4959833901495c78a5f4004a', '402881e44904bb0c014904ce4bb90004', '402881e44904bb0c014904cff0ff000b', 'jihuayuan', '大众计划员', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a82e58b49c06db30149c0c9da4a00c7', '402881e44904bb0c014904cdedf70002', '402881e44904bb0c014904cf78db0009', 'kezhang', '大众科长', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474ae630007', '8a8aa8514a044a1e014a0454d16c0001', '402881e44904bb0c014904d01565000c', '2434319', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474ae920008', '8a8aa8514a044a1e014a0455448c0002', '402881e44904bb0c014904d01565000c', '234560010', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474aec10009', '8a8aa8514a044a1e014a0455ef100003', '402881e44904bb0c014904d01565000c', '76604071', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474aee0000a', '8a8aa8514a044a1e014a04564d010004', '402881e44904bb0c014904d01565000c', '2434321', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474aeff000b', '8a8aa8514a044a1e014a0456ae950005', '402881e44904bb0c014904d01565000c', '2202000', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474af2e000c', '8a8aa8514a044a1e014a045701380006', '402881e44904bb0c014904d01565000c', '2202021', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474af4d000d', '8a8aa8514a044a1e014a04575f9e0007', '402881e44904bb0c014904d01565000c', '2203067', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474af6c000e', '8a8aa8514a044a1e014a045800c90008', '402881e44904bb0c014904d01565000c', '2212120', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474af8c000f', '8a8aa8514a044a1e014a0458583d0009', '402881e44904bb0c014904d01565000c', '76619021', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474afba0010', '8a8aa8514a044a1e014a04596c41000a', '402881e44904bb0c014904d01565000c', '234560011', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474afda0011', '8a8aa8514a044a1e014a045a05c7000b', '402881e44904bb0c014904d01565000c', '234560013', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474aff90012', '8a8aa8514a044a1e014a045ac916000d', '402881e44904bb0c014904d01565000c', '76618011', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0474b0280013', '8a8aa8514a044a1e014a045b1eef000e', '402881e44904bb0c014904d01565000c', '234560023', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576070023', '8a8aa8514a044a1e014a045b9385000f', '402881e44904bb0c014904d01565000c', '234560019', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576360024', '8a8aa8514a044a1e014a045be9610010', '402881e44904bb0c014904d01565000c', '234560016', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576550025', '8a8aa8514a044a1e014a045cfdf70011', '402881e44904bb0c014904d01565000c', '2202019', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576750026', '8a8aa8514a044a1e014a045d63ba0012', '402881e44904bb0c014904d01565000c', '2101064', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576940027', '8a8aa8514a044a1e014a0461948b0013', '402881e44904bb0c014904d01565000c', '2202335', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576c30028', '8a8aa8514a044a1e014a046239fe0014', '402881e44904bb0c014904d01565000c', '2206391', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047576f10029', '8a8aa8514a044a1e014a046468960015', '402881e44904bb0c014904d01565000c', '2230011', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a04757711002a', '8a8aa8514a044a1e014a046507240016', '402881e44904bb0c014904d01565000c', '2101010', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0475773f002b', '8a8aa8514a0467ab014a0469137d0001', '402881e44904bb0c014904d01565000c', '76699091', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0475775f002c', '8a8aa8514a0467ab014a0469ae090002', '402881e44904bb0c014904d01565000c', '2101014', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0475777e002d', '8a8aa8514a0467ab014a046ac10d0003', '402881e44904bb0c014904d01565000c', '234560020', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047577ad002e', '8a8aa8514a0467ab014a046bde810004', '402881e44904bb0c014904d01565000c', '2201523', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a047577cc002f', '8a8aa8514a0467ab014a0472c6720005', '402881e44904bb0c014904d01565000c', '2202289', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0475bc7c0030', '8a8aa8514a044a1e014a045a5fc6000c', '402881e44904bb0c014904d01565000c', '234560017', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8514a0467ab014a0475bc9b0031', '8a8aa8514a0467ab014a0473e6b10006', '402881e44904bb0c014904d01565000c', '234560014', '经销商', null, null, null, null);
+INSERT INTO `tr_user_group` VALUES ('8a8aa8ce49c21f900149c2221de90002', '8a8aa8ce49c21f900149c221d9bb0001', '402881e44904bb0c014904d01565000c', 'jingxiaoshang3', '经销商', null, null, null, null);
+
+-- ----------------------------
+-- Table structure for ts_group
+-- ----------------------------
+DROP TABLE IF EXISTS `ts_group`;
+CREATE TABLE `ts_group` (
+  `ID_GROUP` varchar(32) NOT NULL,
+  `IS_ENABLE` varchar(2) DEFAULT NULL COMMENT '是否有效',
+  `GROUP_NAME` varchar(100) NOT NULL COMMENT '组名',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  `DESCRI` varchar(250) DEFAULT NULL COMMENT '组名描述',
+  PRIMARY KEY (`ID_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='组表';
+
+-- ----------------------------
+-- Records of ts_group
+-- ----------------------------
+INSERT INTO `ts_group` VALUES ('402882e45c541fd5015c5421fbf40002', '1', '用户管理', '2017-05-29 20:15:32', '2017-05-29 20:15:32', null, null, '用户管理');
+INSERT INTO `ts_group` VALUES ('402882e45c5442fa015c544c93300002', '1', '群组管理', '2017-05-29 21:02:03', '2017-05-29 21:02:03', null, null, '群组管理权限');
+INSERT INTO `ts_group` VALUES ('4028e59a49176e330149176f001a0001', '1', '管理员', '2014-10-16 13:29:50', '2014-10-16 13:29:50', null, null, null);
+
+-- ----------------------------
+-- Table structure for ts_resource
+-- ----------------------------
+DROP TABLE IF EXISTS `ts_resource`;
+CREATE TABLE `ts_resource` (
+  `ID_RESOURCE` varchar(32) NOT NULL,
+  `URL` varchar(250) NOT NULL COMMENT '资源url地址',
+  `PRIORITY` decimal(65,30) DEFAULT NULL COMMENT '优先级',
+  `RES_TYPE` varchar(250) DEFAULT NULL COMMENT '资源类型',
+  `RES_NAME` varchar(250) NOT NULL COMMENT '资源名',
+  `MEMO` varchar(250) DEFAULT NULL COMMENT '描述',
+  `IS_ENABLE` varchar(2) DEFAULT NULL COMMENT '是否有效',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  PRIMARY KEY (`ID_RESOURCE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资源';
+
+-- ----------------------------
+-- Records of ts_resource
+-- ----------------------------
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950baa09c001a', '/pages/TsUser/doSystemJump.do', '1.000000000000000000000000000000', '1', '系统管理', null, '1', '2014-10-27 16:30:48', '2014-10-27 16:30:48', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bb4e15001f', '/ss/Users/doList.do', '1.000000000000000000000000000000', '1', '系统管理-用户管理', null, '1', '2014-10-27 16:31:32', '2014-10-27 16:31:32', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bb74980020', '/ss/Groups/doList.do', '1.000000000000000000000000000000', '1', '系统管理-群组管理', null, '1', '2014-10-27 16:31:42', '2014-10-27 16:31:42', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bb9c0c0021', '/ss/Roles/doList.do', '1.000000000000000000000000000000', '1', '系统管理-角色管理', null, '1', '2014-10-27 16:31:52', '2014-10-27 16:31:52', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bbbe1e0022', '/ss/Resources/doList.do', '1.000000000000000000000000000000', '1', '系统管理-权限管理', null, '1', '2014-10-27 16:32:01', '2014-10-27 16:32:01', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bbe7a80023', '/ss/UsersGroups/doList.do', '1.000000000000000000000000000000', '1', '系统管理-用户群组管理', null, '1', '2014-10-27 16:32:12', '2014-10-27 16:32:12', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bc0d540024', '/ss/GroupsRoles/doList.do', '1.000000000000000000000000000000', '1', '系统管理-群租角色管理', null, '1', '2014-10-27 16:32:21', '2014-10-27 16:32:21', null, null);
+INSERT INTO `ts_resource` VALUES ('8a8aa8f8495096a3014950bc2db00025', '/ss/RolesResources/doList.do', '1.000000000000000000000000000000', '1', '系统管理-角色权限管理', null, '1', '2014-10-27 16:32:30', '2014-10-27 16:32:30', null, null);
+
+-- ----------------------------
+-- Table structure for ts_role
+-- ----------------------------
+DROP TABLE IF EXISTS `ts_role`;
+CREATE TABLE `ts_role` (
+  `ID_ROLE` varchar(32) NOT NULL,
+  `IS_ENABLE` varchar(2) DEFAULT NULL COMMENT '是否有效',
+  `ROLE_NAME` varchar(150) NOT NULL COMMENT '角色名称',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '修改时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  `DESCRI` varchar(250) DEFAULT NULL COMMENT '角色描述',
+  PRIMARY KEY (`ID_ROLE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+
+-- ----------------------------
+-- Records of ts_role
+-- ----------------------------
+INSERT INTO `ts_role` VALUES ('402881e44904bb0c014904d1934e0015', '1', '管理员', '2014-10-12 22:44:43', '2014-10-12 22:44:43', null, null, '管理员');
+INSERT INTO `ts_role` VALUES ('402882e45c541fd5015c542239010003', '1', '用户管理', '2017-05-29 20:15:47', '2017-05-29 23:51:27', null, null, null);
+INSERT INTO `ts_role` VALUES ('402882e45c5442fa015c544cd18f0003', '1', '群组管理', '2017-05-29 21:02:19', '2017-05-29 21:02:19', null, null, null);
+
+-- ----------------------------
+-- Table structure for ts_user
+-- ----------------------------
+DROP TABLE IF EXISTS `ts_user`;
+CREATE TABLE `ts_user` (
+  `ID_USER` varchar(32) NOT NULL,
+  `IS_ENABLE` varchar(2) DEFAULT NULL COMMENT '是否有效',
+  `USERNAME` varchar(50) NOT NULL COMMENT '用户名',
+  `PWD` varchar(50) DEFAULT NULL COMMENT '密码',
+  `CREATEDT` datetime DEFAULT NULL COMMENT '创建日期',
+  `UPDATEDT` datetime DEFAULT NULL COMMENT '创建时间',
+  `CREATE_NAME` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `UPDATE_NAME` varchar(50) DEFAULT NULL COMMENT '修改人',
+  `REALNAME` varchar(250) DEFAULT NULL COMMENT '真实姓名',
+  `DESCRI` varchar(250) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`ID_USER`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Records of ts_user
+-- ----------------------------
+INSERT INTO `ts_user` VALUES ('402881e44904bb0c014904cda42f0001', '1', 'super', 'GzIxZVzrt6H3g+3fJ9JUyg==', '2014-10-25 19:17:06', '2014-11-11 23:00:13', 'super', 'super', '超级管理员', null);
+INSERT INTO `ts_user` VALUES ('402882e45c541fd5015c5421d0a00001', '1', '用户管理', '4QrcOUm6Wau+VuBX8g+IPg==', '2017-05-29 20:15:21', '2017-05-29 21:00:54', null, null, '用户管理', '密码:123456');
+INSERT INTO `ts_user` VALUES ('402882e45c5442fa015c544c1e9d0001', '1', 'groupmgr', '4QrcOUm6Wau+VuBX8g+IPg==', '2017-05-29 21:01:33', '2017-05-29 21:01:33', null, null, '群组管理', '密码:123456');
