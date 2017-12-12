@@ -83,17 +83,7 @@
 		<artifactId>spring-security-cas</artifactId>
 		<version>${springsecurity.version}</version>
 	</dependency>
-	<!-- struts2 -->
-	<dependency>
-		<groupId>org.apache.struts</groupId>
-		<artifactId>struts2-core</artifactId>
-		<version>${struts2.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.struts</groupId>
-		<artifactId>struts2-spring-plugin</artifactId>
-		<version>${struts2.version}</version>
-	</dependency>
+	
 	<!-- javax.persitence -->
 	<dependency>
 		<groupId>javax.persistence</groupId>
@@ -217,6 +207,7 @@
   <modules>
     <module>SpringSecurity-Common</module>
     <module>SpringSecurity-Web</module>
+    <module>SpringSecurity-Action</module>
   </modules>
   
   <build>
