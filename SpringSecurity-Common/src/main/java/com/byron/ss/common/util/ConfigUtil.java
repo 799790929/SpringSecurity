@@ -9,7 +9,7 @@ public class ConfigUtil {
 	static {
 		InputStream ips = 
 				ConfigUtil.class.getClassLoader()
-				.getResourceAsStream("config/ezSales.properties");
+				.getResourceAsStream("config/config.properties");
 		try {
 			props.load(ips);
 		} catch(Exception e) {

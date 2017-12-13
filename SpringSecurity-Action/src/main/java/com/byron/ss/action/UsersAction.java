@@ -207,27 +207,10 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 //		return "/myIndex.jsp";
 	}
 	
-	private String getRsscCodeOptions(String rsscCode) {
-		StringBuilder sb = new StringBuilder();
-        String sql = "select distinct rssc_code,rssc_code as test from ts_point";
-        List<Object[]> list = this.usersManager.getEntityDao().getFieldsBySql(sql);
-        if (null != list) {
-            for (Object[] item : list) {
-            	if (null != rsscCode && !rsscCode.equals(item[0])) {
-            		sb.append("<option value='"+ item[0] +"'>").append(item[0]).append("</option>");
-            	} else {
-            		sb.append("<option value='"+ item[0] +"' selected>").append(item[0]).append("</option>");
-            	}
-            }
-        }
-        
-        return sb.toString();
-	}
 	
 	public String doSavePage() {
 		HttpServletRequest request = this.getRequest();
 		
-		request.setAttribute("rsscCodeOptions", this.getRsscCodeOptions(""));
 		
 		request.setAttribute("context", "/ss/Users/userSave.jsp");
 		request.setAttribute("left", systemLeft);
