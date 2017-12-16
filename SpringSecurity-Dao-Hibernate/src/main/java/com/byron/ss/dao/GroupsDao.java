@@ -19,7 +19,6 @@ import com.byron.ss.model.GroupsRoles;
 
 @Repository
 public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
-	private UsersDao usersDao;
 	/**增加setXXXX()方法,spring就可以通过autowire自动设置对象属性,请注意大小写*/
 	private GroupsRolesDao groupsRolesDao;
 
@@ -55,10 +54,6 @@ public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 				}
 			}
 		}
-	}
-	
-	public void setUsersDao(UsersDao dao) {
-		this.usersDao = dao;
 	}
 
 	public void setGroupsRolesDao(GroupsRolesDao groupsRolesDao) {
