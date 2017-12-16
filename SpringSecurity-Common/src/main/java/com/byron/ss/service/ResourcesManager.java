@@ -7,10 +7,6 @@
 
 package com.byron.ss.service;
 
-import java.util.List;
-
-import org.hibernate.Transaction;
-import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +14,6 @@ import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.ResourcesDao;
 import com.byron.ss.model.Resources;
-import com.byron.ss.model.RolesResources;
 
 
 /**
@@ -56,7 +51,8 @@ public class ResourcesManager extends BaseManager<Resources,java.lang.String>{
 	 * @throws Exception
 	 */
 	public void doDeleteResource(String id) throws Exception {
-		Session session = this.resourcesDao.getSessionFactory().openSession();
+		this.resourcesDao.doDeleteResource(id);
+		/*Session session = this.resourcesDao.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		
 		try {
@@ -82,6 +78,6 @@ public class ResourcesManager extends BaseManager<Resources,java.lang.String>{
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 	}
 }

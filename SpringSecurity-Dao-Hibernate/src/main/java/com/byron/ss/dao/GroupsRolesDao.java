@@ -7,16 +7,55 @@
 
 package com.byron.ss.dao;
 
+import java.util.List;
+
+import org.hibernate.SQLQuery;
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import com.byron.ss.common.base.BaseHibernateDao;
+import com.byron.ss.common.util.HibernateToolsUtil;
+import com.byron.ss.model.Groups;
 import com.byron.ss.model.GroupsRoles;
+import com.byron.ss.model.Roles;
 
 @Repository
 public class GroupsRolesDao extends BaseHibernateDao<GroupsRoles,java.lang.String>{
 
 	public Class getEntityClass() {
 		return GroupsRoles.class;
+	}
+	
+	public boolean hasGroupByRole(Roles role) throws Exception {
+		boolean exists = false;
+		Session session = this.getSessionFactory().openSession();
+		
+		StringBuffer hql = new StringBuffer();
+		hql.append("SELECT {g.*} ");
+		hql.append("FROM " + HibernateToolsUtil.getTableName(Groups.class) + " g ");
+		hql.append("," + HibernateToolsUtil.getTableName(GroupsRoles.class) + " gr ");
+		hql.append("," + HibernateToolsUtil.getTableName(Roles.class) + " r ");
+		hql.append(" where 1=1 and g."+ Groups.g_pk_group +"=gr."+ GroupsRoles.gr_group_id +" and r."+ Roles.r_pk_role +"=gr."+ GroupsRoles.gr_role_id +" ");
+		if(null == role) {
+			throw new Exception("角色不能为空!");
+		}
+		hql.append(" and r."+ Roles.r_pk_role +"='" + role.getId() + "' ");
+		logger.info("\nsql->[" + hql.toString() + "]");
+		SQLQuery query = session.createSQLQuery(hql.toString());
+		query.addEntity("g", Groups.class);
+		List<Object> list = query.list();
+		if(null != list && list.size() > 0) {
+			exists = true;
+		}
+		if(null != session) {
+			try {
+				session.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return exists;
 	}
 	
 	/*public Page findPage(GroupsRolesQuery query) {

@@ -21,6 +21,13 @@
   <dependencies>
   	<dependency>
       <groupId>com.byron</groupId>
+      <artifactId>SpringSecurity-Dao-Hibernate</artifactId>
+      <version>0.0.1</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Hibernate\0.0.1\SpringSecurity-Dao-Hibernate-0.0.1.jar</systemPath>
+    </dependency>  
+  	<dependency>
+      <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Common</artifactId>
       <version>0.0.2</version>  
       <scope>system</scope>
@@ -58,6 +65,40 @@
 		<groupId>org.apache.struts</groupId>
 		<artifactId>struts2-spring-plugin</artifactId>
 		<version>${struts2.version}</version>
+	</dependency>
+	
+	<!-- hibernate -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-annotations</artifactId>
+		<version>3.3.0.ga</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-commons-annotations</artifactId>
+		<version>3.3.0.ga</version>
+	</dependency>
+	<dependency>
+		<groupId>javax.validation</groupId>
+		<artifactId>validation-api</artifactId>
+		<version>1.1.0.Final</version>
+	</dependency>
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>5.0.1.Final</version>
+	</dependency>
+	
+	<!-- javax.persitence -->
+	<dependency>
+		<groupId>javax.persistence</groupId>
+		<artifactId>persistence-api</artifactId>
+		<version>1.0</version>
 	</dependency>
      
     <dependency> 

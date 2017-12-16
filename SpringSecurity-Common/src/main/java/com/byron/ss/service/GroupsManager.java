@@ -7,10 +7,6 @@
 
 package com.byron.ss.service;
 
-import java.util.List;
-
-import org.hibernate.Transaction;
-import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +14,6 @@ import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.GroupsDao;
 import com.byron.ss.model.Groups;
-import com.byron.ss.model.GroupsRoles;
 
 
 /**
@@ -60,7 +55,8 @@ public class GroupsManager extends BaseManager<Groups,java.lang.String>{
 	 * @throws Exception 
 	 */
 	public void doDeleteGroup(String id) throws Exception {
-		Session session = this.groupsDao.getSessionFactory().openSession();
+		this.groupsDao.doDeleteGroup(id);
+		/*Session session = this.groupsDao.getSessionFactory().openSession();
 		Transaction tx = session.beginTransaction();
 		
 		try {
@@ -86,6 +82,6 @@ public class GroupsManager extends BaseManager<Groups,java.lang.String>{
 					e.printStackTrace();
 				}
 			}
-		}
+		}*/
 	}
 }

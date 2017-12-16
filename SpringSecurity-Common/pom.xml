@@ -17,11 +17,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+  	<dependency>
+      <groupId>com.byron</groupId>
+      <artifactId>SpringSecurity-Dao-Hibernate</artifactId>
+      <version>0.0.1</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Hibernate\0.0.1\SpringSecurity-Dao-Hibernate-0.0.1.jar</systemPath>
+    </dependency>  
     <!-- <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
-      <scope>test</scope>
+      <scope>test</scope> 
     </dependency> -->
   </dependencies>
 </project>

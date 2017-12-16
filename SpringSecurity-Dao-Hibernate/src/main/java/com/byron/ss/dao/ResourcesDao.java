@@ -9,18 +9,52 @@ package com.byron.ss.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
 
 import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.Roles;
+import com.byron.ss.model.RolesResources;
 
 @Repository
 public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
+	private RolesResourcesDao rolesResourcesDao;
+	
 	
 	public Class getEntityClass() {
 		return Resources.class;
+	}
+	
+	public void doDeleteResource(String id) throws Exception {
+		Session session = this.getSessionFactory().openSession();
+		Transaction tx = session.beginTransaction();
+		
+		try {
+			Resources resource = this.getById(id);
+			if(null != resource) {
+				List<RolesResources> list = this.rolesResourcesDao.findAllBy("resourceId", id);
+				if(null != list) {
+					for(RolesResources rrs : list) {
+						session.delete(rrs);
+					}
+				}
+			}
+			session.delete(resource);
+			tx.commit();
+		} catch(Exception e) {
+			tx.rollback();
+			throw new Exception("删除失败!");
+		} finally {
+			if(null != session) {
+				try {
+					session.close();
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 	
 	/*public Page findPage(ResourcesQuery query) {
@@ -85,4 +119,10 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
 		}
 		return list;
 	}
+	
+	public void setRolesResourcesDao(RolesResourcesDao rolesResourcesDao) {
+		this.rolesResourcesDao = rolesResourcesDao;
+	}
+	
+	
 }

@@ -12,14 +12,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.hibernate.SQLQuery;
-import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
-import com.byron.ss.common.util.HibernateToolsUtil;
 import com.byron.ss.dao.GroupsRolesDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.GroupsRoles;
@@ -94,7 +91,8 @@ public class GroupsRolesManager extends BaseManager<GroupsRoles,java.lang.String
 	//final static String r_pk_role = "ID_ROLE";//角色   id
 	
 	public boolean hasGroupByRole(Roles role) throws Exception {
-		boolean exists = false;
+		return this.groupsRolesDao.hasGroupByRole(role);
+		/*boolean exists = false;
 		Session session = this.groupsRolesDao.getSessionFactory().openSession();
 		
 		StringBuffer hql = new StringBuffer();
@@ -122,7 +120,7 @@ public class GroupsRolesManager extends BaseManager<GroupsRoles,java.lang.String
 			}
 		}
 		
-		return exists;
+		return exists;*/
 	}
 	
 	public List<Groups> findByPage(HttpServletRequest request) {

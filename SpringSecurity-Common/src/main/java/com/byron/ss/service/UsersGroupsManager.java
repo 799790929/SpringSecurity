@@ -12,14 +12,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
-import org.hibernate.SQLQuery;
-import org.hibernate.classic.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
-import com.byron.ss.common.util.HibernateToolsUtil;
 import com.byron.ss.dao.UsersGroupsDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.Users;
@@ -94,7 +91,8 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 	//static final String g_pk_group = "ID_GROUP";
 	//static final String ug_group_id = "GRP_ID";
 	public boolean hasUserByGroup(Groups group) throws Exception {
-		boolean exists = false;
+		return this.usersGroupsDao.hasUserByGroup(group);
+		/*boolean exists = false;
 		Session session = this.usersGroupsDao.getSessionFactory().openSession();
 		
 		StringBuffer hql = new StringBuffer();
@@ -122,7 +120,7 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 			}
 		}
 		
-		return exists;
+		return exists;*/
 	}
 	
 	
