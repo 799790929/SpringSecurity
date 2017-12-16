@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="SpringSecurity-Web">
-        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <property name="context-root" value="/SpringSecurity-Web"/>
-        <property name="java-output-path" value="/SpringSecurity-Web/src/main/webapp/WEB-INF/classes"/>
+        <property name="java-output-path" value="/SpringSecurity-Web/src/main/webapp/src/main/resources"/>
     </wb-module>
 </project-modules>

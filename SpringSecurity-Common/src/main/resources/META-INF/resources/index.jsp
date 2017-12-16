@@ -27,28 +27,30 @@
 
 <body>
 	<div style="width: 98%;margin: 0 auto;">
-	<table style="width:100%">
-		<c:if test="${topPath!='/WEB-INF/topblank.jsp'}">
-		<tr>
-			<td>
-				<div style="height: 100px">
-					<jsp:include page="${topPath}"></jsp:include>
-				</div>
-			</td>
-		</tr>
-		</c:if>
-		<tr>
-			<td>
-			<jsp:include page="${boxPath }"></jsp:include>
+		<table style="width:100%">
+			<c:if test="${topPath!='/WEB-INF/topblank.jsp'}">
+			<tr>
+				<td>
+					<div style="height: 100px">
+						<%-- <jsp:include page="${topPath}"></jsp:include> --%>
+					</div>
 				</td>
-		</tr>
-		<tr>
-			<td><div>
-					<jsp:include page="${footerPath }"></jsp:include>
-				</div></td>
-		</tr>
-	</table>
-</div>
+			</tr>
+			</c:if>
+			<tr>
+				<td>
+					<jsp:include page="${boxPath }"></jsp:include>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<jsp:include page="${footerPath }"></jsp:include>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
 
 
 </body>

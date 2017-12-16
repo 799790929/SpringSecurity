@@ -4,7 +4,7 @@
   name="SpringSecurity-Web"
   id="myeclipse.1448105350883"
   context-root="/SpringSecurity-Web"
-  j2ee-spec="6.0"
+  j2ee-spec="1.7"
   archive="SpringSecurity-Web.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />

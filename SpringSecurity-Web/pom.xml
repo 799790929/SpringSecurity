@@ -15,6 +15,7 @@
    
    <properties>
     <struts2.version>2.3.16.3</struts2.version>
+    <spring.version>3.2.2.RELEASE</spring.version>
   </properties>
    
   <dependencies>
@@ -32,8 +33,22 @@
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Action\0.0.1\SpringSecurity-Action-0.0.1.jar</systemPath>
     </dependency>
+    <!-- <dependency>
+      <groupId>com.byron</groupId>
+      <artifactId>SpringSecurity-Controller</artifactId>
+      <version>0.0.1</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Controller\0.0.1\SpringSecurity-Controller-0.0.1.jar</systemPath>
+    </dependency> -->
     
-    <!-- struts2 -->
+    <!-- springmvc -->
+    <!-- <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency> -->
+    
+    <!-- struts2 --> 
 	<dependency>
 		<groupId>org.apache.struts</groupId>
 		<artifactId>struts2-core</artifactId>
