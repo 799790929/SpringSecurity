@@ -1,19 +1,25 @@
 # SpringSecurity
 1.应用说明
-SpringSecurity是maven管理的应用,采用ssh框架,包括3个子项目。
-一个是SpringSecurity-Common封装了spring-security的配置,提供权限管理的基础服务;
-一个是SpringSecurity-Action封装了struts的控制层代码;
-一个是SpringSecurity-Web用于集成测试SpringSecurity-Common,SpringSecurity-Action包;
+SpringSecurity是maven管理的应用,采用ssh框架,包括若干子项目。
+SpringSecurity-Common封装了spring-security的配置,提供权限管理的基础服务;
+SpringSecurity-Action封装了struts的控制层代码;
+SpringSecurity-Controller封装了springmvc的控制层代码;
+SpringSecurity-Web用于集成测试SpringSecurity-Common,SpringSecurity-Action包;
 
-SpringSecurity-Common主要有2个作用:
-一是封装了spring-security的配置；
-二是添加了用户组角色资源的管理界面,实际应用中，只需关注业务逻辑，用户权限的管理交予SpringSecurity-Common处理
+SpringSecurity/pom.xml,SpringSecurity-Action与SpringSecurity-Controller选一个
 
-读者可根据实际情况扩展或修改jar包(SpringSecurity-Common.jar,SpringSecurity-Action.jar)
+SpringSecurity-Common封装了集成spring-security的配置,实现了管理UAL的一些基本逻辑
+
+读者可根据实际情况扩展或修改jar包
 
 sql初始化语句：
 SpringSecurity-Common/sql.mysql.init
 SpringSecurity-Common/sql.oracle.init
+
+1.1 Action与Controller的选择取决于用户主框架用的是struts还是springmvc作控制层
+SpringSecurity-Web/web.xml选择相应的过滤器
+
+SpringSecurity-Web/pom.xml配置相应的依赖
 
 2.在本地安装完成后,启动访问
 http://localhost:8080/SpringSecurity-Web/login.jsp
