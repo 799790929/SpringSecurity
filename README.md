@@ -3,15 +3,17 @@
 
 SpringSecurity是maven管理的应用,采用ssh框架,包括若干子项目。
 
-SpringSecurity-Common封装了spring-security的配置,提供权限管理的基础服务;
+SpringSecurity-Common封装了spring-security的配置,提供权限管理的service层,控制层才采用springmvc或struts2,持久层采用hibernate;
 
 SpringSecurity-Action封装了struts的控制层代码;
 
 SpringSecurity-Controller封装了springmvc的控制层代码;
 
-SpringSecurity-Web用于集成测试SpringSecurity-Common,SpringSecurity-Action包;
+SpringSecurity-Dao-Hibernate持久层采用hibernate;
 
-SpringSecurity/pom.xml,SpringSecurity-Action与SpringSecurity-Controller选一个
+SpringSecurity-Web用于集成测试;
+
+SpringSecurity-Web/pom.xml,SpringSecurity-Action与SpringSecurity-Controller选一个
 
 SpringSecurity-Common封装了集成spring-security的配置,实现了管理UAL的一些基本逻辑
 
