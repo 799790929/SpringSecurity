@@ -20,6 +20,7 @@ import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.GroupsDao;
 import com.byron.ss.dao.UsersDao;
+import com.byron.ss.dao.UsersGroupsDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.Roles;
@@ -53,9 +54,19 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 	
 	private UsersGroupsManager usersGroupsManager;
 	
+	private UsersGroupsDao usersGroupsDao;
+	
 	public void setUsersGroupsManager(UsersGroupsManager usersGroupsManager) {
 		this.usersGroupsManager = usersGroupsManager;
 	}
+	
+	
+
+	public void setUsersGroupsDao(UsersGroupsDao usersGroupsDao) {
+		this.usersGroupsDao = usersGroupsDao;
+	}
+
+
 
 	public EntityDao getEntityDao() {
 		return this.usersDao;
@@ -74,11 +85,15 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		
 		//获取查询条件
 		String sqlWhere = " where 1=1 ";
+		String sqlWhere1 = " where 1=1 ";
+		// String sql = " where 1=1 ";
 		List<Object> params = new ArrayList<Object>();
 		if(null != username) {
 			sqlWhere += " and username like ? ";
 			params.add("%" + StringUtil.nullStringTrim(username) + "%");
 			
+			
+			sqlWhere1 += " and username like '%" + StringUtil.nullStringTrim(username) + "%' ";
 //			sqlWhere += " and username like '%" + username + "%' ";
 		}
 		
@@ -86,7 +101,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		int start = 0;
 		long requestPage = 1;
 		int pageSize = 20;
-		long rows = this.usersDao.getRows(sqlWhere, parameters);
+		long rows = this.usersDao.getRowsBySql(sqlWhere1);
 		try {
 			requestPage = Integer.parseInt(request.getParameter("requestPage"));
 			if(requestPage < 1) {
@@ -106,7 +121,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		start = (int)(requestPage - 1) * pageSize;
 		request.setAttribute("requestPage", requestPage);
 		request.setAttribute("pagesCount", pagesCount);
-		List<Users> list = this.getEntityDao().queryByPage(start, pageSize, sqlWhere + sqlOrder, parameters);
+		List<Users> list = this.getEntityDao().queryByPage(start, pageSize, sqlWhere1 + sqlOrder);
 		
 		return list;
 	}
@@ -126,7 +141,8 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		try {
 			Users user = this.getById(id);
 			if(null != user) {
-				List<UsersGroups> list = this.usersGroupsManager.getEntityDao().findAllBy("userId", user.getId());
+				List<UsersGroups> list = this.usersGroupsDao.getUsersGroupsByUserId(id);
+				
 				if(null != list) {
 					for(UsersGroups ug : list) {
 						//session.delete(ug);
@@ -280,7 +296,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 	 * @param propertyName 
 	 * @return
 	 */
-	public List<Users> findUsersByProperty(String propertyName , Object value) {
-		return this.usersDao.findAllBy(propertyName , value);
-	}
+	/*public List<Users> findUsersByProperty(String propertyName , Object value) {
+		return this.usersDao.findAllBy(propertyName , value);k
+	}*/
 }

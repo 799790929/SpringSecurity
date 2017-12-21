@@ -26,6 +26,11 @@ public class UsersGroupsDao extends BaseHibernateDao<UsersGroups,java.lang.Strin
 		return UsersGroups.class;
 	}
 	
+	public List<UsersGroups> getUsersGroupsByUserId(String userId) {
+		List<UsersGroups> list = this.findAllBy("userId", userId);
+		return list;
+	}
+	
 	public boolean hasUserByGroup(Groups group) throws Exception {
 		boolean exists = false;
 		Session session = this.getSessionFactory().openSession();

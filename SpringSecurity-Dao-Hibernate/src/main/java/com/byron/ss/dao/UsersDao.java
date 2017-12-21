@@ -10,6 +10,7 @@ package com.byron.ss.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.classic.Session;
 import org.springframework.stereotype.Repository;
@@ -30,6 +31,17 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 	
 	public Class getEntityClass() {
 		return Users.class;
+	}
+	
+	public long getRowsBySql(String query) {
+		Session session = this.getSessionFactory().openSession();
+		String queryString = "select count(*) from " + getEntityClass().getName();
+		if (query != null) {
+			queryString += " " + query;
+		}
+		Query q = session.createQuery(queryString);
+		
+		return (Long) q.list().get(0);
 	}
 
 	public List<Groups> getGroupsByUser(Users user) throws Exception {
