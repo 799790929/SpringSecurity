@@ -16,11 +16,14 @@ import org.springframework.stereotype.Repository;
 import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.GroupsRoles;
+import com.byron.ss.model.Roles;
 
 @Repository
 public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 	/**增加setXXXX()方法,spring就可以通过autowire自动设置对象属性,请注意大小写*/
 	private GroupsRolesDao groupsRolesDao;
+	
+	private RolesDao rolesDao;
 
 	public Class getEntityClass() {
 		return Groups.class;
@@ -55,9 +58,20 @@ public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 			}
 		}
 	}
+	
+	public List<Roles> getRolesByGroupId(Groups group) {
+		String hql1 = "from com.byron.ss.model.Roles where id in (select roleId from com.byron.ss.model.GroupsRoles where groupId='" + group.getId() + "')";
+		List<Roles> roles = rolesDao.executeFind(hql1, null);
+		
+		return roles;
+	}
 
 	public void setGroupsRolesDao(GroupsRolesDao groupsRolesDao) {
 		this.groupsRolesDao = groupsRolesDao;
+	}
+
+	public void setRolesDao(RolesDao rolesDao) {
+		this.rolesDao = rolesDao;
 	}
 
 	

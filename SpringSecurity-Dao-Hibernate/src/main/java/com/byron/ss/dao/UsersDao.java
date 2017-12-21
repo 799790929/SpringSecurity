@@ -26,7 +26,8 @@ import com.byron.ss.model.UsersGroups;
 
 @Repository
 public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
-
+	private GroupsDao groupsDao;
+	
 	public Class getEntityClass() {
 		return Users.class;
 	}
@@ -63,6 +64,13 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 			}
 		}
 		return listFinal;
+	}
+	
+	public List<Groups> getGroupsByUserId(Users user) {
+		String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.UsersGroups where userId='" + user.getId() + "')";
+		List<Groups> groups = groupsDao.executeFind(hql, null);
+		
+		return groups;
 	}
 	
 	public List<Roles> getRolesByUser(Users user) {
@@ -147,4 +155,10 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 //		List<Users> objs = this.findByCriteria(Restrictions.eq("account", name));
 		return (objs.size() == 0 ? null : objs.get(0)); 
 	}
+
+	public void setGroupsDao(GroupsDao groupsDao) {
+		this.groupsDao = groupsDao;
+	}
+	
+	
 }

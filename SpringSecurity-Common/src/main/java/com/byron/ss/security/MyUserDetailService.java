@@ -60,13 +60,16 @@ public class MyUserDetailService implements UserDetailsService {
 	public Set<GrantedAuthority> obtionGrantedAuthorities(Users user)
 	{
 		Set<GrantedAuthority> authSet = new HashSet<GrantedAuthority>();
-		String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.UsersGroups where userId='" + user.getId() + "')";
-		List<Groups> groups = groupsDao.executeFind(hql, null);
+		/*String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.UsersGroups where userId='" + user.getId() + "')";
+		List<Groups> groups = groupsDao.executeFind(hql, null);*/
+		List<Groups> groups = usersDao.getGroupsByUserId(user);
+		
 		
 		for(Groups group : groups)
 		{
-			String hql1 = "from com.byron.ss.model.Roles where id in (select roleId from com.byron.ss.model.GroupsRoles where groupId='" + group.getId() + "')";
-			List<Roles> roles = rolesDao.executeFind(hql1, null);
+			/*String hql1 = "from com.byron.ss.model.Roles where id in (select roleId from com.byron.ss.model.GroupsRoles where groupId='" + group.getId() + "')";
+			List<Roles> roles = rolesDao.executeFind(hql1, null);*/
+			List<Roles> roles = groupsDao.getRolesByGroupId(group);
 			for(Roles role : roles) {
 				authSet.add(new GrantedAuthorityImpl(role.getName()));
 			}
