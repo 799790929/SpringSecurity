@@ -2,7 +2,7 @@ package com.byron.ss.common.base;
 
 
 /**
- * @author badqiu
+ * @author byron
  */
 public class BaseEntity implements java.io.Serializable {
 

@@ -25,7 +25,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ReflectionUtils;
 
 /**
- * @author badqiu
+ * @author byron
  */
 public abstract class BaseHibernateDao<E,PK extends Serializable> extends HibernateDaoSupport implements EntityDao<E,PK>{
 	/**

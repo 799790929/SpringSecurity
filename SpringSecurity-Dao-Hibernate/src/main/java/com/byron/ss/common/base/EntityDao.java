@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.HibernateCallback;
 /**
- * @author badqiu
+ * @author byron
  */
 public interface EntityDao <E,PK extends Serializable>{
 
