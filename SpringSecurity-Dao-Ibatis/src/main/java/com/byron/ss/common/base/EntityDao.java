@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.dao.DataAccessException;
 /**
- * @author badqiu
+ * @author byron
  */
 public interface EntityDao <E,PK extends Serializable>{
 
