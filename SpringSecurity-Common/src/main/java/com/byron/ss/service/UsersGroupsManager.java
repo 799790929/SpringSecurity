@@ -87,6 +87,11 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 			}
 		}
 	}
+	
+	public List<UsersGroups> queryByModel(UsersGroups ug) {
+		return usersGroupsDao.queryByModel(ug);
+	}
+	
 	//static final String u_pk_user = "ID_USER";
 	//static final String g_pk_group = "ID_GROUP";
 	//static final String ug_group_id = "GRP_ID";
@@ -141,13 +146,14 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 		}
 		
 		//获取查询条件
-		String sqlWhere = " where 1=1 ";
+		/*String sqlWhere = " where 1=1 ";
 		sqlWhere += " and "+ Users.u_pk_user +" not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
-		
+		*/
 		int start = 0;
 		long requestPage = 1;
 		int pageSize = 20;
-		long rows = this.usersManager.getEntityDao().getRows(sqlWhere);
+		// long rows = this.usersManager.getEntityDao().getRows(sqlWhere);
+		long rows = this.usersManager.getRowsNotInGroupId(group.getId());
 		try {
 			requestPage = Integer.parseInt(request.getParameter("requestPage"));
 			if(requestPage < 1) {
@@ -171,8 +177,8 @@ public class UsersGroupsManager extends BaseManager<UsersGroups,java.lang.String
 		
 		request.setAttribute("requestPage", requestPage);
 		request.setAttribute("pagesCount", pagesCount);
-		List<Users> list = this.usersManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
-		
+		// List<Users> list = this.usersManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
+		List<Users> list = this.usersManager.queryByPageNotInGroupId(start, pageSize, group.getId());
 		return list;
 	}
 }

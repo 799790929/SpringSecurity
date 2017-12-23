@@ -7,6 +7,8 @@
 
 package com.byron.ss.dao;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.byron.ss.common.base.BaseHibernateDao;
@@ -17,6 +19,10 @@ public class RolesDao extends BaseHibernateDao<Roles,java.lang.String>{
 
 	public Class getEntityClass() {
 		return Roles.class;
+	}
+	
+	public List<Roles> getRolesByName(String name) {
+		return findAllBy("name", name);
 	}
 	
 	/*public Page findPage(RolesQuery query) {

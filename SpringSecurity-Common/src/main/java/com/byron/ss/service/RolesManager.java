@@ -7,6 +7,8 @@
 
 package com.byron.ss.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +35,10 @@ public class RolesManager extends BaseManager<Roles,java.lang.String>{
 	}
 	public EntityDao getEntityDao() {
 		return this.rolesDao;
+	}
+	
+	public List<Roles> getRolesByName(String name) {
+		return rolesDao.getRolesByName(name);
 	}
 	
 	/*@Transactional(readOnly=true)

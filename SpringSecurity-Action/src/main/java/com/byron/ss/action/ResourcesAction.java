@@ -227,7 +227,8 @@ public class ResourcesAction extends BaseStruts2Action implements Preparable,Mod
 		resource.setCreatedt(new Date());
 		resource.setUpdatedt(new Date());
 		try {
-			List<Resources> list = this.resourcesManager.getEntityDao().findAllBy("name", name);
+			/*List<Resources> list = this.resourcesManager.getEntityDao().findAllBy("name", name);*/
+			List<Resources> list = this.resourcesManager.getResourcesByName(name);
 			if(null != list && list.size() > 0) {
 				out("{\"success\":false,\"message\":\"数据库中已存在该资源名\"}");
 				return;

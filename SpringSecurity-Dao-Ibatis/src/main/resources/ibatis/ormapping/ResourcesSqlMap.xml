@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 命名空间路径采用实体类完整路径 -->  
+<sqlMap namespace="tsResource" >  
+	<resultMap id="tsResourceResult" class="com.byron.ss.model.Resources">
+        <result column="ID_RESOURCE" property="id" />
+        <result column="URL" property="url" />
+        <result column="PRIORITY" property="priority" />
+        <result column="RES_TYPE" property="type" />
+        <result column="RES_NAME" property="name" />
+        <result column="MEMO" property="memo" />
+        <result column="IS_ENABLE" property="enable" />
+        <result column="CREATEDT" property="createdt" />
+        <result column="UPDATEDT" property="updatedt" />
+        <result column="CREATE_NAME" property="createName" />
+        <result column="UPDATE_NAME" property="updateName" />
+    </resultMap>
+    <sql id="sqlWhere">
+	    <dynamic prepend="WHERE">
+		       <isNotEmpty prepend="AND" property="id">
+		             ID_RESOURCE = #id#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="url">
+		             URL = #url#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="priority">
+		             PRIORITY = #priority#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="type">
+		             RES_TYPE = #type#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="name">
+		             RES_NAME = #name#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="memo">
+		             MEMO = #memo#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="enable">
+		             IS_ENABLE = #enable#
+		       </isNotEmpty>
+		       <!-- <isNotEmpty prepend="AND" property="createdtBegin">
+		             CREATEDT >= #createdtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="createdtEnd">
+		             CREATEDT &lt;= #createdtEnd#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtBegin">
+		             UPDATEDT >= #updatedtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtEnd">
+		             UPDATEDT &lt;= #updatedtEnd#
+		       </isNotEmpty> -->
+		       <isNotEmpty prepend="AND" property="createName">
+		             CREATE_NAME = #createName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updateName">
+		             UPDATE_NAME = #updateName#
+		       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+    <insert id="insert" parameterClass="com.byron.ss.model.Resources">
+    	<selectKey keyProperty="id" resultClass="java.lang.String">  
+	        select  replace(uuid(),'-','')   from dual  
+	    </selectKey>
+        insert into ts_resource (ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE,
+            CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME)
+        values (#id#, #url#, #priority#, #type#, #name#, #memo#, #enable#,
+            #createdt#, #updatedt#, #createName#, #updateName#)
+    </insert>
+    <update id="updateByPrimaryKey" parameterClass="com.byron.ss.model.Resources">
+        update ts_resource
+        set URL = #url#,
+            PRIORITY = #priority#,
+            RES_TYPE = #type#,
+            RES_NAME = #name#,
+            MEMO = #memo#,
+            IS_ENABLE = #enable#,
+            CREATEDT = #createdt#,
+            UPDATEDT = #updatedt#,
+            CREATE_NAME = #createName#,
+            UPDATE_NAME = #updateName#
+        where ID_RESOURCE = #id#
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterClass="com.byron.ss.model.Resources">
+        update ts_resource
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="url">
+                URL = #url#
+            </isNotNull>
+            <isNotNull prepend="," property="priority">
+                PRIORITY = #priority#
+            </isNotNull>
+            <isNotNull prepend="," property="type">
+                RES_TYPE = #type#
+            </isNotNull>
+            <isNotNull prepend="," property="name">
+                RES_NAME = #name#
+            </isNotNull>
+            <isNotNull prepend="," property="memo">
+                MEMO = #memo#
+            </isNotNull>
+            <isNotNull prepend="," property="enable">
+                IS_ENABLE = #enable#
+            </isNotNull>
+            <isNotNull prepend="," property="createdt">
+                CREATEDT = #createdt#
+            </isNotNull>
+            <isNotNull prepend="," property="updatedt">
+                UPDATEDT = #updatedt#
+            </isNotNull>
+            <isNotNull prepend="," property="createName">
+                CREATE_NAME = #createName#
+            </isNotNull>
+            <isNotNull prepend="," property="updateName">
+                UPDATE_NAME = #updateName#
+            </isNotNull>
+        </dynamic>
+        where ID_RESOURCE = #id#
+    </update>
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+        delete from ts_resource
+        where ID_RESOURCE = #id#
+    </delete>
+    <select id="getByPrimaryKey" resultMap="tsResourceResult" parameterClass="java.lang.String">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource
+        where ID_RESOURCE = #id#
+    </select>
+    
+    <select id="queryByMap" resultMap="tsResourceResult" parameterClass="java.util.HashMap">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="queryByModel" resultMap="tsResourceResult" parameterClass="resource">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource
+        <include refid="sqlWhere"/>
+    </select> 
+    
+    <select id="findAll" resultMap="tsResourceResult">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource
+    </select>  
+    
+    <select id="getResourcesForRole" resultClass="java.lang.String" parameterClass="role">
+        select rs.url as url from ts_role r,tr_role_resource rss, ts_resource rs 
+        where rss.role_id=r.ID_ROLE  and rss.resource_id=rs.ID_RESOURCE 
+        <isNotEmpty prepend="and" property="name">
+        	 r.ROLE_NAME=#name#
+        </isNotEmpty>
+        <isNotEmpty prepend="and" property="id">
+        	 r.id_role=#id#
+        </isNotEmpty>
+    </select>  
+    
+    <select id="getResourcesByRoleId" resultMap="tsResourceResult" parameterClass="role">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource where ID_RESOURCE in (select resource_id from tr_role_resource where role_id=#id#)
+        
+    </select>  
+    
+    <select id="getResourcesByRole" resultClass="resource" parameterClass="role">
+        select rs.id_resource as id,rs.is_enable as enable,rs.url as url,rs.priority as priority,
+        	rs.res_name as name,rs.res_type as type,
+        	rs.createdt as createdt,rs.updatedt as createdt,rs.memo as memo 
+        from ts_resource rs,tr_role_resource rrs,ts_role r 
+        where rs.id_resource=rrs.resource_id and r.id_role=rrs.role_id 
+        and r.id_role=#id#  
+    </select>
+    
+    <select id="getResourcesNotInRoleId" resultMap="tsResourceResult" parameterClass="role">
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource where ID_RESOURCE not in (select resource_id from tr_role_resource where role_id=#id#)
+        
+    </select>  
+	 
+    <select id="count" resultClass="long">
+        SELECT count(*) FROM ts_resource <include refid="sqlWhere"/>    
+    </select>
+    <select id="countBySqlWhere" resultClass="long">
+        SELECT count(*) FROM ts_resource #sqlWhere#    
+    </select>
+    
+    <select id="queryByPage"  resultMap="tsResourceResult"  >  
+        select ID_RESOURCE, URL, PRIORITY, RES_TYPE, RES_NAME, MEMO, IS_ENABLE, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from ts_resource
+        $sqlWhere$
+    </select>
+</sqlMap>  

@@ -249,7 +249,8 @@ public class RolesController extends BaseController {
 		role.setCreatedt(new Date());
 		role.setUpdatedt(new Date());
 		try {
-			List<Roles> list = this.rolesManager.getEntityDao().findAllBy("name", name);
+			/*List<Roles> list = this.rolesManager.getEntityDao().findAllBy("name", name);*/
+			List<Roles> list = this.rolesManager.getRolesByName(name);
 			if(null != list && list.size() > 0) {
 				out(response, "{\"success\":false,\"message\":\"数据库中已存在该角色\"}");
 				return;

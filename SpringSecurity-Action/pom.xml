@@ -26,6 +26,13 @@
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Hibernate\0.0.1\SpringSecurity-Dao-Hibernate-0.0.1.jar</systemPath>
     </dependency>  
+    <!-- <dependency>
+      <groupId>com.byron</groupId>
+      <artifactId>SpringSecurity-Dao-Ibatis</artifactId>
+      <version>0.0.1</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Ibatis\0.0.1\SpringSecurity-Dao-Ibatis-0.0.1.jar</systemPath>
+    </dependency>   -->
   	<dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Common</artifactId>

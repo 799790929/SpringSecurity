@@ -120,6 +120,10 @@ public class RolesResourcesManager extends BaseManager<RolesResources,java.lang.
 		return exists;*/
 	}
 	
+	public List<RolesResources> queryByModel(RolesResources rrs) {
+		return rolesResourcesDao.queryByModel(rrs);
+	}
+	
 	public List<Resources> findByPage(HttpServletRequest request) {
 		String roleid = request.getParameter("roleid");
 		Roles role = null;
@@ -143,7 +147,8 @@ public class RolesResourcesManager extends BaseManager<RolesResources,java.lang.
 		int start = 0;
 		long requestPage = 1;
 		int pageSize = 20;
-		long rows = this.resourcesManager.getEntityDao().getRows(sqlWhere);
+		// long rows = this.resourcesManager.getEntityDao().getRows(sqlWhere);
+		long rows = this.resourcesManager.getRowsNotInRoleId(role.getId());
 		try {
 			requestPage = Integer.parseInt(request.getParameter("requestPage"));
 			if(requestPage < 1) {
@@ -167,7 +172,8 @@ public class RolesResourcesManager extends BaseManager<RolesResources,java.lang.
 		
 		request.setAttribute("requestPage", requestPage);
 		request.setAttribute("pagesCount", pagesCount);
-		List<Resources> list = this.resourcesManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
+		// List<Resources> list = this.resourcesManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
+		List<Resources> list = this.resourcesManager.queryByPageNotInRoleId(start, pageSize, role.getId());
 		
 		return list;
 	}

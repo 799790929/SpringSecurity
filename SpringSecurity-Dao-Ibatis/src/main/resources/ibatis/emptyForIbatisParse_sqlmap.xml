@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<!-- only for ibatis parse -->
+<sqlMap namespace="emptyOnlyForIbatisParse_sqlmap">
+	<typeAlias alias="user" type="com.byron.ss.model.Users"/>
+	<typeAlias alias="group" type="com.byron.ss.model.Groups"/>
+	<typeAlias alias="role" type="com.byron.ss.model.Roles"/>
+	<typeAlias alias="resource" type="com.byron.ss.model.Resources"/>
+	<typeAlias alias="usergroup" type="com.byron.ss.model.UsersGroups"/>
+	<typeAlias alias="grouprole" type="com.byron.ss.model.GroupsRoles"/>
+	<typeAlias alias="roleresource" type="com.byron.ss.model.RolesResources"/>
+	
+</sqlMap>

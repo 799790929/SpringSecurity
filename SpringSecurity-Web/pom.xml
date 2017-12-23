@@ -19,13 +19,20 @@
   </properties>
    
   <dependencies>
-  	<dependency>
+  	<!-- <dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Dao-Hibernate</artifactId>
       <version>0.0.1</version>  
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Hibernate\0.0.1\SpringSecurity-Dao-Hibernate-0.0.1.jar</systemPath>
-    </dependency>  
+    </dependency>   -->
+    <dependency>
+      <groupId>com.byron</groupId>
+      <artifactId>SpringSecurity-Dao-Ibatis</artifactId>
+      <version>0.0.1</version>  
+      <scope>system</scope>
+      <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Dao-Ibatis\0.0.1\SpringSecurity-Dao-Ibatis-0.0.1.jar</systemPath>
+    </dependency> 
   	<dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Common</artifactId>
@@ -33,30 +40,30 @@
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Common\0.0.2\SpringSecurity-Common-0.0.2.jar</systemPath>
     </dependency>  
-    <dependency>
+    <!-- <dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Action</artifactId>
       <version>0.0.1</version>  
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Action\0.0.1\SpringSecurity-Action-0.0.1.jar</systemPath>
-    </dependency>
-    <!-- <dependency>
+    </dependency> -->
+    <dependency>
       <groupId>com.byron</groupId>
       <artifactId>SpringSecurity-Controller</artifactId>
       <version>0.0.1</version>  
       <scope>system</scope>
       <systemPath>D:\Program Files\apache-maven-3.0.5\repo\com\byron\SpringSecurity-Controller\0.0.1\SpringSecurity-Controller-0.0.1.jar</systemPath>
-    </dependency> -->
+    </dependency>
     
     <!-- springmvc -->
-    <!-- <dependency>
+    <dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
 		<version>${spring.version}</version>
-	</dependency> -->
+	</dependency>
     
     <!-- struts2 --> 
-	<dependency>
+	<!-- <dependency>
 		<groupId>org.apache.struts</groupId>
 		<artifactId>struts2-core</artifactId>
 		<version>${struts2.version}</version>
@@ -65,10 +72,10 @@
 		<groupId>org.apache.struts</groupId>
 		<artifactId>struts2-spring-plugin</artifactId>
 		<version>${struts2.version}</version>
-	</dependency>
+	</dependency> -->
 	
 	<!-- hibernate -->
-	<dependency>
+	<!-- <dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
 		<version>${hibernate.version}</version>
@@ -93,13 +100,19 @@
 		<artifactId>hibernate-validator</artifactId>
 		<version>5.0.1.Final</version>
 	</dependency>
-	
-	<!-- javax.persitence -->
 	<dependency>
 		<groupId>javax.persistence</groupId>
 		<artifactId>persistence-api</artifactId>
 		<version>1.0</version>
-	</dependency>
+	</dependency> -->
+	
+	<!-- ibatis -->
+    <dependency>
+         <groupId>org.apache.ibatis</groupId>
+         <artifactId>ibatis-sqlmap</artifactId>
+         <version>2.3.4.726</version>
+     </dependency>
+     
      
     <dependency> 
 		<groupId>ojdbc</groupId> 

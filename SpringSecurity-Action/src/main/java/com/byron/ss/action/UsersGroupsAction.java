@@ -153,8 +153,9 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 		if(null != groups && groups.size() > 0) {
 			if(null == group)
 				group = groups.get(0);
-			String hql = "from com.byron.ss.model.Users where id in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
-			users = usersManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Users where id in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
+			users = usersManager.getEntityDao().executeFind(hql, null);*/
+			users = usersManager.getUsersByGroupId(group.getId());
 		}
 		
 		request.setAttribute("users", users);
@@ -183,8 +184,9 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 		if(null != groups && groups.size() > 0) {
 			if(null == group) 
 				group = groups.get(0);
-			String hql = "from com.byron.ss.model.Users where id not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
-			users = usersManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Users where id not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
+			users = usersManager.getEntityDao().executeFind(hql, null);*/
+			users = usersManager.getUsersNotInGroupId(group.getId());
 		}
 		
 		request.setAttribute("users", users);
@@ -206,9 +208,13 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 		String groupid = request.getParameter("groupid");
 		log.info("\nuserid:" + userid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"userId", "groupId"};
+		/*String[] fieldNames = {"userId", "groupId"};
 		Object[] fieldValues = {userid, groupid};
-		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		UsersGroups ug = new UsersGroups();
+		ug.setUserId(userid);
+		ug.setGroupId(groupid);
+		List<UsersGroups> usersGroups = usersGroupsManager.queryByModel(ug);
 		if(null != usersGroups && usersGroups.size() > 0) {
 			UsersGroups po = usersGroups.get(0);
 			if(null != po) {
@@ -232,9 +238,13 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 		String groupid = request.getParameter("groupid");
 		log.info("\nuserid:" + userid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"userId", "groupId"};
+		/*String[] fieldNames = {"userId", "groupId"};
 		Object[] fieldValues = {userid, groupid};
-		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		UsersGroups ug = new UsersGroups();
+		ug.setUserId(userid);
+		ug.setGroupId(groupid);
+		List<UsersGroups> usersGroups = usersGroupsManager.queryByModel(ug);
 		if(null != usersGroups && usersGroups.size() > 0) {
 			UsersGroups po = usersGroups.get(0);
 			if(null != po) {
@@ -293,8 +303,9 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 			if(null == group) {
 				group = groups.get(0);
 			}
-			String hql = "from com.byron.ss.model.Users where "+Users.u_pk_user+" in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
-			users = usersManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Users where "+Users.u_pk_user+" in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
+			users = usersManager.getEntityDao().executeFind(hql, null);*/
+			users = groupsManager.getUsersByGroupId(group);
 		}
 		
 		request.setAttribute("users", users);
@@ -417,9 +428,13 @@ public class UsersGroupsAction extends BaseStruts2Action implements Preparable,M
 		String groupid = request.getParameter("groupid");
 		log.info("\nuserid:" + userid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"userId", "groupId"};
+		/*String[] fieldNames = {"userId", "groupId"};
 		Object[] fieldValues = {userid, groupid};
-		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<UsersGroups> usersGroups = usersGroupsManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		UsersGroups ug = new UsersGroups();
+		ug.setUserId(userid);
+		ug.setGroupId(groupid);
+		List<UsersGroups> usersGroups = usersGroupsManager.queryByModel(ug);
 		if(null != usersGroups && usersGroups.size() > 0) {
 			UsersGroups po = usersGroups.get(0);
 			if(null != po) {

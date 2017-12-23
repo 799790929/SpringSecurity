@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 命名空间路径采用实体类完整路径 -->  
+<sqlMap namespace="trUserGroup" >  
+	<resultMap id="trUserGroupResult" class="com.byron.ss.model.UsersGroups">
+        <result column="ID_USER_GROUP" property="id" />
+        <result column="USER_ID" property="userId" />
+        <result column="GRP_ID" property="groupId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="GROUP_NAME" property="groupName" />
+        <result column="CREATEDT" property="createdt" />
+        <result column="UPDATEDT" property="updatedt" />
+        <result column="CREATE_NAME" property="createName" />
+        <result column="UPDATE_NAME" property="updateName" />
+    </resultMap>
+    
+    <sql id="sqlWhere">
+	    <dynamic prepend="WHERE">
+		       <isNotEmpty prepend="AND" property="id">
+		             ID_USER_GROUP = #id#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="userId">
+		             USER_ID = #userId#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="groupId">
+		             GRP_ID = #groupId#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="userName">
+		             USER_NAME = #userName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="groupName">
+		             GROUP_NAME = #groupName#
+		       </isNotEmpty>
+		       <!-- <isNotEmpty prepend="AND" property="createdtBegin">
+		             CREATEDT >= #createdtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="createdtEnd">
+		             CREATEDT &lt;= #createdtEnd#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtBegin">
+		             UPDATEDT >= #updatedtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtEnd">
+		             UPDATEDT &lt;= #updatedtEnd#
+		       </isNotEmpty> -->
+		       <isNotEmpty prepend="AND" property="createName">
+		             CREATE_NAME = #createName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updateName">
+		             UPDATE_NAME = #updateName#
+		       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+    <insert id="insert" parameterClass="com.byron.ss.model.UsersGroups">
+    	<selectKey keyProperty="id" resultClass="java.lang.String">  
+	        select  replace(uuid(),'-','')   from dual  
+	    </selectKey>
+        insert into tr_user_group (ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT,
+            UPDATEDT, CREATE_NAME, UPDATE_NAME)
+        values (#id#, #userId#, #groupId#, #userName#, #groupName#, #createdt#, #updatedt#,
+            #createName#, #updateName#)
+    </insert>
+    <update id="updateByPrimaryKey" parameterClass="com.byron.ss.model.UsersGroups">
+        update tr_user_group
+        set USER_ID = #userId#,
+            GRP_ID = #groupId#,
+            USER_NAME = #userName#,
+            GROUP_NAME = #groupName#,
+            CREATEDT = #createdt#,
+            UPDATEDT = #updatedt#,
+            CREATE_NAME = #createName#,
+            UPDATE_NAME = #updateName#
+        where ID_USER_GROUP = #id#
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterClass="com.byron.ss.model.UsersGroups">
+        update tr_user_group
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="userId">
+                USER_ID = #userId#
+            </isNotNull>
+            <isNotNull prepend="," property="groupId">
+                GRP_ID = #groupId#
+            </isNotNull>
+            <isNotNull prepend="," property="userName">
+                USER_NAME = #userName#
+            </isNotNull>
+            <isNotNull prepend="," property="groupName">
+                GROUP_NAME = #groupName#
+            </isNotNull>
+            <isNotNull prepend="," property="createdt">
+                CREATEDT = #createdt#
+            </isNotNull>
+            <isNotNull prepend="," property="updatedt">
+                UPDATEDT = #updatedt#
+            </isNotNull>
+            <isNotNull prepend="," property="createName">
+                CREATE_NAME = #createName#
+            </isNotNull>
+            <isNotNull prepend="," property="updateName">
+                UPDATE_NAME = #updateName#
+            </isNotNull>
+        </dynamic>
+        where ID_USER_GROUP = #id#
+    </update>
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+        delete from tr_user_group
+        where ID_USER_GROUP = #id#
+    </delete>
+    <select id="getByPrimaryKey" resultMap="trUserGroupResult" parameterClass="java.lang.String">
+        select ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_user_group
+        where ID_USER_GROUP = #id#
+    </select>
+    
+    
+    <select id="getUsersGroupsByUserId"  resultMap="trUserGroupResult"  parameterClass="java.lang.String" >  
+        select ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_user_group
+        where user_id = #userId# 
+  
+    </select>
+    
+    <select id="queryByMap" resultMap="trUserGroupResult" parameterClass="java.util.HashMap">
+        select ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_user_group
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="queryByModel" resultMap="trUserGroupResult" parameterClass="usergroup">
+        select ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_user_group
+        <include refid="sqlWhere"/>
+    </select> 
+    
+    <select id="findAll" resultMap="trUserGroupResult">
+        select ID_USER_GROUP, USER_ID, GRP_ID, USER_NAME, GROUP_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_user_group
+    </select> 
+    
+	 
+    <select id="count" resultClass="long">
+        SELECT count(*) FROM tr_user_group <include refid="sqlWhere"/>    
+    </select>
+    <select id="countBySqlWhere" resultClass="long">
+        SELECT count(*) FROM tr_user_group #sqlWhere#    
+    </select>
+</sqlMap>  

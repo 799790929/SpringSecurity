@@ -63,6 +63,14 @@ public class UsersGroupsDao extends BaseHibernateDao<UsersGroups,java.lang.Strin
 		return exists;
 	}
 	
+	public List<UsersGroups> queryByModel(UsersGroups ug) {
+		String[] fieldNames = {"userId", "groupId"};
+		Object[] fieldValues = {ug.getUserId(), ug.getGroupId()};
+		List<UsersGroups> list = findBy(fieldNames, fieldValues, "");
+		
+		return list;
+	}
+	
 	/*public Page findPage(UsersGroupsQuery query) {
         //XsqlBuilder syntax,please see http://code.google.com/p/rapid-xsqlbuilder
         // [column]为字符串拼接, {column}为使用占位符. [column]为使用字符串拼接,如username='[username]',偷懒时可以使用字符串拼接 

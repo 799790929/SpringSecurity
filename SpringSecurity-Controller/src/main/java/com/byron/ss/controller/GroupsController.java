@@ -214,7 +214,8 @@ public class GroupsController extends BaseController {
 		group.setCreatedt(new Date());
 		group.setUpdatedt(new Date());
 		try {
-			List<Groups> list = this.groupsManager.getEntityDao().findAllBy("name", name);
+			/*List<Groups> list = this.groupsManager.getEntityDao().findAllBy("name", name);*/
+			List<Groups> list = this.groupsManager.getGroupsByName(name);
 			if(null != list && list.size() > 0) {
 				out(response, "{\"success\":false,\"message\":\"数据库中已存在该群组名\"}");
 				return;

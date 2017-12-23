@@ -239,7 +239,8 @@ public class RolesAction extends BaseStruts2Action implements Preparable,ModelDr
 		role.setCreatedt(new Date());
 		role.setUpdatedt(new Date());
 		try {
-			List<Roles> list = this.rolesManager.getEntityDao().findAllBy("name", name);
+			/*List<Roles> list = this.rolesManager.getEntityDao().findAllBy("name", name);*/
+			List<Roles> list = this.rolesManager.getRolesByName(name);
 			if(null != list && list.size() > 0) {
 				out("{\"success\":false,\"message\":\"数据库中已存在该角色\"}");
 				return;

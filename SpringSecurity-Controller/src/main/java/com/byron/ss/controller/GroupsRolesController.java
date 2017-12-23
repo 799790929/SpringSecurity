@@ -135,8 +135,9 @@ public class GroupsRolesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
-			groups = groupsManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
+			groups = groupsManager.getEntityDao().executeFind(hql, null);*/
+			groups = groupsManager.getGroupsByRoleId(role);
 		}
 		
 		request.setAttribute("roles", roles);
@@ -164,8 +165,9 @@ public class GroupsRolesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Groups where not id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
-			groups = groupsManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Groups where not id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
+			groups = groupsManager.getEntityDao().executeFind(hql, null);*/
+			groups = groupsManager.getGroupsNotInRoleId(role.getId());
 		}
 		
 		request.setAttribute("roles", roles);
@@ -189,9 +191,13 @@ public class GroupsRolesController extends BaseController {
 		String groupid = request.getParameter("groupid");
 		log.info("\nroleid:" + roleid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"roleId", "groupId"};
+		/*String[] fieldNames = {"roleId", "groupId"};
 		Object[] fieldValues = {roleid, groupid};
-		List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		GroupsRoles gr = new GroupsRoles();
+		gr.setRoleId(roleid);
+		gr.setGroupId(groupid);
+		List<GroupsRoles> groupsRoles = groupsRolesManager.queryByModel(gr);
 		if(null != groupsRoles && groupsRoles.size() > 0) {
 			GroupsRoles po = groupsRoles.get(0);
 			if(null != po) {
@@ -215,9 +221,13 @@ public class GroupsRolesController extends BaseController {
 		String groupid = request.getParameter("groupid");
 		log.info("\nroleid:" + roleid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"roleId", "groupId"};
-		Object[] fieldValues = {roleid, groupid};
-		List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		//String[] fieldNames = {"roleId", "groupId"};
+		//Object[] fieldValues = {roleid, groupid};
+		//List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		GroupsRoles gr = new GroupsRoles();
+		gr.setRoleId(roleid);
+		gr.setGroupId(groupid);
+		List<GroupsRoles> groupsRoles = groupsRolesManager.queryByModel(gr);
 		if(null != groupsRoles && groupsRoles.size() > 0) {
 			GroupsRoles po = groupsRoles.get(0);
 			if(null != po) {
@@ -274,8 +284,9 @@ public class GroupsRolesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Groups where "+ Groups.g_pk_group +" in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
-			groups = groupsManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Groups where "+ Groups.g_pk_group +" in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
+			groups = groupsManager.getEntityDao().executeFind(hql, null);*/
+			groups = groupsManager.getGroupsByRoleId(role);
 		}
 		
 		request.setAttribute("roles", roles);
@@ -412,9 +423,13 @@ public class GroupsRolesController extends BaseController {
 		String groupid = request.getParameter("groupid");
 		log.info("\nroleid:" + roleid);
 		log.info("\ngroupid:" + groupid);
-		String[] fieldNames = {"roleId", "groupId"};
+		/*String[] fieldNames = {"roleId", "groupId"};
 		Object[] fieldValues = {roleid, groupid};
-		List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<GroupsRoles> groupsRoles = groupsRolesManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		GroupsRoles gr = new GroupsRoles();
+		gr.setRoleId(roleid);
+		gr.setGroupId(groupid);
+		List<GroupsRoles> groupsRoles = groupsRolesManager.queryByModel(gr);
 		if(null != groupsRoles && groupsRoles.size() > 0) {
 			GroupsRoles po = groupsRoles.get(0);
 			if(null != po) {

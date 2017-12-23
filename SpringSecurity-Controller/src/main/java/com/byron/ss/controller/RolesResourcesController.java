@@ -153,8 +153,9 @@ public class RolesResourcesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Resources where id in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
-			resources = resourcesManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Resources where id in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
+			resources = resourcesManager.getEntityDao().executeFind(hql, null);*/
+			resources = resourcesManager.getResourcesByRoleId(role);
 		}
 		
 		request.setAttribute("roles", roles);
@@ -182,8 +183,9 @@ public class RolesResourcesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Resources where id not in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
-			resources = resourcesManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Resources where id not in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
+			resources = resourcesManager.getEntityDao().executeFind(hql, null);*/
+			resources = resourcesManager.getResourcesNotInRowId(role.getId());
 		}
 		
 		request.setAttribute("roles", roles);
@@ -205,9 +207,13 @@ public class RolesResourcesController extends BaseController {
 		String resourceid = request.getParameter("resourceid");
 		log.info("\nroleid:" + roleid);
 		log.info("\nresourceid:" + resourceid);
-		String[] fieldNames = {"roleId", "resourceId"};
+		/*String[] fieldNames = {"roleId", "resourceId"};
 		Object[] fieldValues = {roleid, resourceid};
-		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		RolesResources rrs = new RolesResources();
+		rrs.setRoleId(roleid);
+		rrs.setResourceId(resourceid);
+		List<RolesResources> rolesResources = rolesResourcesManager.queryByModel(rrs);
 		if(null != rolesResources && rolesResources.size() > 0) {
 			RolesResources po = rolesResources.get(0);
 			if(null != po) {
@@ -231,9 +237,13 @@ public class RolesResourcesController extends BaseController {
 		String resourceid = request.getParameter("resourceid");
 		log.info("\nroleid:" + roleid);
 		log.info("\nresourceid:" + resourceid);
-		String[] fieldNames = {"roleId", "resourceId"};
+		/*String[] fieldNames = {"roleId", "resourceId"};
 		Object[] fieldValues = {roleid, resourceid};
-		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		RolesResources rrs = new RolesResources();
+		rrs.setRoleId(roleid);
+		rrs.setResourceId(resourceid);
+		List<RolesResources> rolesResources = rolesResourcesManager.queryByModel(rrs);
 		if(null != rolesResources && rolesResources.size() > 0) {
 			RolesResources po = rolesResources.get(0);
 			if(null != po) {
@@ -311,8 +321,9 @@ public class RolesResourcesController extends BaseController {
 		if(null != roles && roles.size() > 0) {
 			if(null == role)
 				role = roles.get(0);
-			String hql = "from com.byron.ss.model.Resources where "+ Resources.rs_pk_resource +" in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
-			resources = resourcesManager.getEntityDao().executeFind(hql, null);
+			/*String hql = "from com.byron.ss.model.Resources where "+ Resources.rs_pk_resource +" in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
+			resources = resourcesManager.getEntityDao().executeFind(hql, null);*/
+			resources = resourcesManager.getResourcesByRoleId(role);
 		}
 		
 		request.setAttribute("roles", roles);
@@ -463,9 +474,13 @@ public class RolesResourcesController extends BaseController {
 		String resourceid = request.getParameter("resourceid");
 		log.info("\nroleid:" + roleid);
 		log.info("\nresourceid:" + resourceid);
-		String[] fieldNames = {"roleId", "resourceId"};
+		/*String[] fieldNames = {"roleId", "resourceId"};
 		Object[] fieldValues = {roleid, resourceid};
-		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");
+		List<RolesResources> rolesResources = rolesResourcesManager.getEntityDao().findBy(fieldNames, fieldValues, "");*/
+		RolesResources rrs = new RolesResources();
+		rrs.setRoleId(roleid);
+		rrs.setResourceId(resourceid);
+		List<RolesResources> rolesResources = rolesResourcesManager.queryByModel(rrs);
 		if(null != rolesResources && rolesResources.size() > 0) {
 			RolesResources po = rolesResources.get(0);
 			if(null != po) {

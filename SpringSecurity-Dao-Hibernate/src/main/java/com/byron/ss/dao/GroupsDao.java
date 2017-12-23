@@ -17,6 +17,7 @@ import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Groups;
 import com.byron.ss.model.GroupsRoles;
 import com.byron.ss.model.Roles;
+import com.byron.ss.model.Users;
 
 @Repository
 public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
@@ -24,9 +25,26 @@ public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 	private GroupsRolesDao groupsRolesDao;
 	
 	private RolesDao rolesDao;
+	
+	private UsersDao usersDao;
 
 	public Class getEntityClass() {
 		return Groups.class;
+	}
+	
+	public long getRowsNotInRoleId(String roleId) {
+		String sqlWhere = " where 1=1 ";
+		//sqlWhere += " and PK_GROUP not in (select groupId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
+		sqlWhere += " and "+ Groups.g_pk_group +" not in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + roleId + "') ";
+		long rows = getRows(sqlWhere);
+		return rows;
+	}
+	
+	public List<Groups> queryByPageNotInRoleId(int start, int pageSize, String roleId) {
+		String sqlWhere = " where 1=1 ";
+		//sqlWhere += " and PK_GROUP not in (select groupId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
+		sqlWhere += " and "+ Groups.g_pk_group +" not in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + roleId + "') ";
+		return queryByPage(start, pageSize, sqlWhere);
 	}
 	
 	public void doDeleteGroup(String id) throws Exception {
@@ -65,6 +83,32 @@ public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 		
 		return roles;
 	}
+	
+	public List<Users> getUsersByGroupId(Groups group) {
+		String hql1 = "from com.byron.ss.model.Users where id in (select userId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "')";
+		List<Users> users = usersDao.executeFind(hql1, null);
+		
+		return users;
+	}
+	
+	public List<Groups> getGroupsByRoleId(Roles role) {
+		String hql = "from com.byron.ss.model.Groups where id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "')";
+		List<Groups> groups = this.executeFind(hql, null);
+		
+		return groups;
+	}
+	
+	public List<Groups> getGroupsByName(String name) {
+		List<Groups> list = findAllBy("name", name);
+		
+		return list;
+	}
+	
+	public List<Groups> getGroupsNotInRoleId(String roleId) {
+		String hql = "from com.byron.ss.model.Groups where not id in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + roleId + "')";
+		return executeFind(hql, null);
+	}
+	
 
 	public void setGroupsRolesDao(GroupsRolesDao groupsRolesDao) {
 		this.groupsRolesDao = groupsRolesDao;
@@ -72,6 +116,10 @@ public class GroupsDao extends BaseHibernateDao<Groups,java.lang.String>{
 
 	public void setRolesDao(RolesDao rolesDao) {
 		this.rolesDao = rolesDao;
+	}
+
+	public void setUsersDao(UsersDao usersDao) {
+		this.usersDao = usersDao;
 	}
 
 	

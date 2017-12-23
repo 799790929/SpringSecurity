@@ -85,6 +85,10 @@ public class GroupsRolesManager extends BaseManager<GroupsRoles,java.lang.String
 		}
 	}
 	
+	public List<GroupsRoles> queryByModel(GroupsRoles gr) {
+		return groupsRolesDao.queryByModel(gr);
+	}
+	
 	//final static String g_pk_group = "ID_GROUP";//群组表id
 	//final static String gr_group_id = "GRP_ID";//群组角色   群组id
 	//final static String gr_role_id = "ROLE_ID";//群组角色   群组id
@@ -140,13 +144,13 @@ public class GroupsRolesManager extends BaseManager<GroupsRoles,java.lang.String
 		}
 		
 		//获取查询条件
-		String sqlWhere = " where 1=1 ";
-		//sqlWhere += " and PK_GROUP not in (select groupId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
+		/*String sqlWhere = " where 1=1 ";
 		sqlWhere += " and "+ Groups.g_pk_group +" not in (select groupId from com.byron.ss.model.GroupsRoles where roleId='" + role.getId() + "') ";
-		int start = 0;
+		*/int start = 0;
 		long requestPage = 1;
 		int pageSize = 20;
-		long rows = this.groupsManager.getEntityDao().getRows(sqlWhere);
+		// long rows = this.groupsManager.getEntityDao().getRows(sqlWhere);
+		long rows = this.groupsManager.getRowsNotInRoleId(role.getId());
 		try {
 			requestPage = Integer.parseInt(request.getParameter("requestPage"));
 			if(requestPage < 1) {
@@ -170,8 +174,8 @@ public class GroupsRolesManager extends BaseManager<GroupsRoles,java.lang.String
 		
 		request.setAttribute("requestPage", requestPage);
 		request.setAttribute("pagesCount", pagesCount);
-		List<Groups> list = this.groupsManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
-		
+		// List<Groups> list = this.groupsManager.getEntityDao().queryByPage(start, pageSize, sqlWhere);
+		List<Groups> list = this.groupsManager.queryByPageNotInRoleId(start, pageSize, role.getId());
 		return list;
 	}
 }

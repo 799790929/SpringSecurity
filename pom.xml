@@ -175,6 +175,7 @@
     <module>SpringSecurity-Action</module>
     <module>SpringSecurity-Controller</module>
     <module>SpringSecurity-Dao-Hibernate</module>
+    <module>SpringSecurity-Dao-Ibatis</module>
   </modules>
   
   <build>

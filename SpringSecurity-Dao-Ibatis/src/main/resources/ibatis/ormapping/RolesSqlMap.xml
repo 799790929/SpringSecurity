@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 命名空间路径采用实体类完整路径 -->  
+<sqlMap namespace="tsRole" > 
+	<resultMap id="tsRoleResult" class="com.byron.ss.model.Roles">
+        <result column="ID_ROLE" property="id" />
+        <result column="IS_ENABLE" property="enable" />
+        <result column="ROLE_NAME" property="name" />
+        <result column="CREATEDT" property="createdt" />
+        <result column="UPDATEDT" property="updatedt" />
+        <result column="CREATE_NAME" property="createName" />
+        <result column="UPDATE_NAME" property="updateName" />
+        <result column="DESCRI" property="descri" />
+    </resultMap>
+    <sql id="sqlWhere">
+	    <dynamic prepend="WHERE">
+		       <isNotEmpty prepend="AND" property="id">
+		             ID_ROLE = #id#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="enable">
+		             IS_ENABLE = #enable#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="name">
+		             ROLE_NAME = #name#
+		       </isNotEmpty>
+		       <!-- <isNotEmpty prepend="AND" property="createdtBegin">
+		             CREATEDT >= #createdtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="createdtEnd">
+		             CREATEDT &lt;= #createdtEnd#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtBegin">
+		             UPDATEDT >= #updatedtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtEnd">
+		             UPDATEDT &lt;= #updatedtEnd#
+		       </isNotEmpty> -->
+		       <isNotEmpty prepend="AND" property="createName">
+		             CREATE_NAME = #createName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updateName">
+		             UPDATE_NAME = #updateName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="descri">
+		             DESCRI = #descri#
+		       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+    <insert id="insert" parameterClass="com.byron.ss.model.Roles">
+    	<selectKey keyProperty="id" resultClass="java.lang.String">  
+	        select  replace(uuid(),'-','')   from dual  
+	    </selectKey>
+        insert into ts_role (ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME,
+            UPDATE_NAME, DESCRI)
+        values (#id#, #enable#, #name#, #createdt#, #updatedt#, #createName#,
+            #updateName#, #descri#)
+    </insert>
+    <update id="updateByPrimaryKey" parameterClass="com.byron.ss.model.Roles">
+        update ts_role
+        set IS_ENABLE = #enable#,
+            ROLE_NAME = #name#,
+            CREATEDT = #createdt#,
+            UPDATEDT = #updatedt#,
+            CREATE_NAME = #createName#,
+            UPDATE_NAME = #updateName#,
+            DESCRI = #descri#
+        where ID_ROLE = #id#
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterClass="com.byron.ss.model.Roles">
+        update ts_role
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="enable">
+                IS_ENABLE = #enable#
+            </isNotNull>
+            <isNotNull prepend="," property="name">
+                ROLE_NAME = #name#
+            </isNotNull>
+            <isNotNull prepend="," property="createdt">
+                CREATEDT = #createdt#
+            </isNotNull>
+            <isNotNull prepend="," property="updatedt">
+                UPDATEDT = #updatedt#
+            </isNotNull>
+            <isNotNull prepend="," property="createName">
+                CREATE_NAME = #createName#
+            </isNotNull>
+            <isNotNull prepend="," property="updateName">
+                UPDATE_NAME = #updateName#
+            </isNotNull>
+            <isNotNull prepend="," property="descri">
+                DESCRI = #descri#
+            </isNotNull>
+        </dynamic>
+        where ID_ROLE = #id#
+    </update>
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+        delete from ts_role
+        where ID_ROLE = #id#
+    </delete>
+    <select id="getByPrimaryKey" resultMap="tsRoleResult" parameterClass="java.lang.String">
+        select ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_role
+        where ID_ROLE = #id#
+    </select>
+
+	<select id="queryByMap" resultMap="tsRoleResult" parameterClass="java.util.HashMap">
+        select ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_role
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="queryByModel" resultMap="tsRoleResult" parameterClass="role">
+        select ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_role
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="findAll" resultMap="tsRoleResult">
+        select ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_role
+    </select>  
+
+	
+	 
+    <select id="count" resultClass="long">
+        SELECT count(*) FROM ts_role <include refid="sqlWhere"/>    
+    </select>
+	<select id="countBySqlWhere" resultClass="long">
+        SELECT count(*) FROM ts_role #sqlWhere#    
+    </select>
+
+
+	<select id="queryByPage"  resultMap="tsRoleResult"  >  
+        select ID_ROLE, IS_ENABLE, ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_role
+        $sqlWhere$
+    </select>
+
+
+</sqlMap>  

@@ -184,7 +184,8 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 			request.setAttribute("isSuper", 1);
 		} else {
 			//其它用户只能查看自己的信息
-			list = this.usersManager.findUsersByProperty("username" , users.getUsername());
+			// list = this.usersManager.findUsersByProperty("username" , users.getUsername());
+			list = this.usersManager.queryUsersByUserName(users.getUsername());
 			request.setAttribute("isSuper", 0);
 			request.setAttribute("requestPage", 1);
 			request.setAttribute("pagesCount", 1);
@@ -298,7 +299,8 @@ public class UsersAction extends BaseStruts2Action implements Preparable,ModelDr
 		user.setCreatedt(new Date());
 		user.setUpdatedt(new Date());
 		try {
-			List<Users> list = this.usersManager.getEntityDao().findAllBy("username", username);
+			/*List<Users> list = this.usersManager.getEntityDao().findAllBy("username", username);*/
+			List<Users> list = this.usersManager.queryUsersByUserName(username);
 			if(null != list && list.size() > 0) {
 				out("{\"success\":false,\"message\":\"数据库中已存在该用户名\"}");
 				return;

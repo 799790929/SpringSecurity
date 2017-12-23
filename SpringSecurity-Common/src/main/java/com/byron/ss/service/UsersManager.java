@@ -72,13 +72,13 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		return this.usersDao;
 	}
 	
-	/*@Transactional(readOnly=true)
-	public Page findPage(UsersQuery query) {
-		return usersDao.findPage(query);
-	}*/
+	public long getRowsNotInGroupId(String groupId) {
+		return usersDao.getRowsNotInGroupId(groupId);
+	}
 	
-	
-	
+	public List<Users> queryByPageNotInGroupId(int start, int pageSize, String groupId) {
+		return usersDao.queryByPageNotInGroupId(start, pageSize, groupId);
+	}
 	
 	public List<Users> findByPage(HttpServletRequest request) {
 		String username = request.getParameter("username");
@@ -126,6 +126,10 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		return list;
 	}
 	
+	public List<Users> getUsersNotInGroupId(String groupId) {
+		return usersDao.getUsersNotInGroupId(groupId);
+	}
+	
 	/**
 	 * 根据用户id删除相应的用户及用户组关系
 	 * <p>Description: </p>
@@ -156,6 +160,7 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 			tx.commit();*/
 		} catch(Exception e) {
 			//tx.rollback();
+			e.printStackTrace();
 			throw new Exception("删除失败!");
 		} finally {
 			/*if(null != session) {
@@ -249,6 +254,10 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 		return listFinal;*/
 	}
 	
+	public List<Users> getUsersByGroupId(String groupId) {
+		return usersDao.getUsersByGroupId(groupId);
+	}
+	
 	public List<Resources> getResourcesByUser(Users user) throws Exception {
 		return this.usersDao.getResourcesByUser(user);
 		/*Session session = this.usersDao.getSessionFactory().openSession();
@@ -299,4 +308,10 @@ public class UsersManager extends BaseManager<Users,java.lang.String>{
 	/*public List<Users> findUsersByProperty(String propertyName , Object value) {
 		return this.usersDao.findAllBy(propertyName , value);k
 	}*/
+	
+	public List<Users> queryUsersByUserName (String username) {
+		List<Users> list = this.usersDao.queryUsersByName(username);
+		
+		return list;
+	}
 }

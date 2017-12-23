@@ -17,6 +17,7 @@ import com.byron.ss.common.base.BaseHibernateDao;
 import com.byron.ss.model.Resources;
 import com.byron.ss.model.Roles;
 import com.byron.ss.model.RolesResources;
+import com.byron.ss.model.Users;
 
 @Repository
 public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
@@ -25,6 +26,20 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
 	
 	public Class getEntityClass() {
 		return Resources.class;
+	}
+	
+	public long getRowsNotInRoleId(String roleId) {
+		String sqlWhere = " where 1=1 ";
+		//sqlWhere += " and PK_GROUP not in (select groupId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
+		sqlWhere += " and "+ Resources.rs_pk_resource +" not in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + roleId + "')";
+		return getRows(sqlWhere);
+	}
+	
+	public List<Resources> queryByPageNotInRoleId(int start, int pageSize, String roleId) {
+		String sqlWhere = " where 1=1 ";
+		//sqlWhere += " and PK_GROUP not in (select groupId from com.byron.ss.model.UsersGroups where groupId='" + group.getId() + "') ";
+		sqlWhere += " and "+ Resources.rs_pk_resource +" not in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + roleId + "')";
+		return queryByPage(start, pageSize, sqlWhere);
 	}
 	
 	public void doDeleteResource(String id) throws Exception {
@@ -57,48 +72,11 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
 		}
 	}
 	
-	/*public Page findPage(ResourcesQuery query) {
-        //XsqlBuilder syntax,please see http://code.google.com/p/rapid-xsqlbuilder
-        // [column]为字符串拼接, {column}为使用占位符. [column]为使用字符串拼接,如username='[username]',偷懒时可以使用字符串拼接 
-        // [column] 为PageRequest的属性
-		String sql = "select t from Resources t where 1=1 "
-			  	+ "/~ and t.enable = {enable} ~/"
-			  	+ "/~ and t.memo = {memo} ~/"
-			  	+ "/~ and t.name = {name} ~/"
-			  	+ "/~ and t.priority = {priority} ~/"
-			  	+ "/~ and t.type = {type} ~/"
-			  	+ "/~ and t.url = {url} ~/"
-				+ "/~ order by [sortColumns] ~/";
-
-        //生成sql2的原因是为了不喜欢使用xsqlbuilder的同学，请修改生成器模板，删除本段的生成
-        StringBuilder sql2 = new StringBuilder("select t from Resources t where 1=1 ");
-        if(isNotEmpty(query.getId())) {
-            sql2.append(" and  t.id = :id ");
-        }
-        if(isNotEmpty(query.getEnable())) {
-            sql2.append(" and  t.enable = :enable ");
-        }
-        if(isNotEmpty(query.getMemo())) {
-            sql2.append(" and  t.memo = :memo ");
-        }
-        if(isNotEmpty(query.getName())) {
-            sql2.append(" and  t.name = :name ");
-        }
-        if(isNotEmpty(query.getPriority())) {
-            sql2.append(" and  t.priority = :priority ");
-        }
-        if(isNotEmpty(query.getType())) {
-            sql2.append(" and  t.type = :type ");
-        }
-        if(isNotEmpty(query.getUrl())) {
-            sql2.append(" and  t.url = :url ");
-        }
-        if(isNotEmpty(query.getSortColumns())) {
-            sql2.append(" order by :sortColumns ");
-        }	
-        
-		return pageQuery(sql,query);
-	}*/
+	public List<Resources> getResourcesNotInRowId(String roleId) {
+		String hql = "from com.byron.ss.model.Resources where id not in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + roleId + "')";
+		List<Resources> resources = executeFind(hql, null);
+		return resources;
+	}
 	
 	final static String rss_role_id = "";//资源表
 	final static String rss_pk_resource = "ID_RESOURCE";//资源表id
@@ -117,6 +95,17 @@ public class ResourcesDao extends BaseHibernateDao<Resources,java.lang.String>{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		return list;
+	}
+	
+	public List<Resources> getResourcesByName(String name) {
+		return findAllBy("name", name);
+	}
+	
+	public List<Resources> getResourcesByRoleId(Roles role) {
+		String hql1 = "from com.byron.ss.model.Resources where id in (select resourceId from com.byron.ss.model.RolesResources where roleId='" + role.getId() + "')";
+		List<Resources> list = this.executeFind(hql1, null);
+		
 		return list;
 	}
 	

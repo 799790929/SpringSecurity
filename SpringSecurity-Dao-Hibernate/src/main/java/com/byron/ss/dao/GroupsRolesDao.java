@@ -58,6 +58,13 @@ public class GroupsRolesDao extends BaseHibernateDao<GroupsRoles,java.lang.Strin
 		return exists;
 	}
 	
+	public List<GroupsRoles> queryByModel(GroupsRoles gr) {
+		String[] fieldNames = {"roleId", "groupId"};
+		Object[] fieldValues = {gr.getRoleId(), gr.getGroupId()};
+		List<GroupsRoles> groupsRoles = findBy(fieldNames, fieldValues, "");
+		return groupsRoles;
+	}
+	
 	/*public Page findPage(GroupsRolesQuery query) {
         //XsqlBuilder syntax,please see http://code.google.com/p/rapid-xsqlbuilder
         // [column]为字符串拼接, {column}为使用占位符. [column]为使用字符串拼接,如username='[username]',偷懒时可以使用字符串拼接 

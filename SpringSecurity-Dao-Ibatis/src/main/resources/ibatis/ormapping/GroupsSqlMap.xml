@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 命名空间路径采用实体类完整路径 -->  
+<sqlMap namespace="tsGroup" >  
+    <resultMap id="tsGroupResult" class="com.byron.ss.model.Groups">
+        <result column="ID_GROUP" property="id" />
+        <result column="IS_ENABLE" property="enable" />
+        <result column="GROUP_NAME" property="name" />
+        <result column="CREATEDT" property="createdt" />
+        <result column="UPDATEDT" property="updatedt" />
+        <result column="CREATE_NAME" property="createName" />
+        <result column="UPDATE_NAME" property="updateName" />
+        <result column="DESCRI" property="descri" />
+    </resultMap>
+    
+	<sql id="sqlWhere">
+	    <dynamic prepend="WHERE">
+		       <isNotEmpty prepend="AND" property="id">
+		             ID_GROUP = #id#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="enable">
+		             IS_ENABLE = #enable#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="name">
+		             GROUP_NAME = #name#
+		       </isNotEmpty>
+		       <!-- <isNotEmpty prepend="AND" property="createdtBegin">
+		             CREATEDT >= #createdtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="createdtEnd">
+		             CREATEDT &lt;= #createdtEnd#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtBegin">
+		             UPDATEDT >= #updatedtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtEnd">
+		             UPDATEDT &lt;= #updatedtEnd#
+		       </isNotEmpty> -->
+		       <isNotEmpty prepend="AND" property="createName">
+		             CREATE_NAME = #createName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updateName">
+		             UPDATE_NAME = #updateName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="descri">
+		             DESCRI = #descri#
+		       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+    <insert id="insert" parameterClass="com.byron.ss.model.Groups">
+    	<selectKey keyProperty="id" resultClass="java.lang.String">  
+	        select  replace(uuid(),'-','')   from dual  
+	    </selectKey>
+        insert into ts_group (ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME,
+            UPDATE_NAME, DESCRI)
+        values (#id#, #enable#, #name#, #createdt#, #updatedt#, #createName#,
+            #updateName#, #descri#)
+    </insert>
+    <update id="updateByPrimaryKey" parameterClass="com.byron.ss.model.Groups">
+        update ts_group
+        set IS_ENABLE = #enable#,
+            GROUP_NAME = #name#,
+            CREATEDT = #createdt#,
+            UPDATEDT = #updatedt#,
+            CREATE_NAME = #createName#,
+            UPDATE_NAME = #updateName#,
+            DESCRI = #descri#
+        where ID_GROUP = #id#
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterClass="com.byron.ss.model.Groups">
+        update ts_group
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="enable">
+                IS_ENABLE = #enable#
+            </isNotNull>
+            <isNotNull prepend="," property="name">
+                GROUP_NAME = #groupName#
+            </isNotNull>
+            <isNotNull prepend="," property="createdt">
+                CREATEDT = #createdt#
+            </isNotNull>
+            <isNotNull prepend="," property="updatedt">
+                UPDATEDT = #updatedt#
+            </isNotNull>
+            <isNotNull prepend="," property="createName">
+                CREATE_NAME = #createName#
+            </isNotNull>
+            <isNotNull prepend="," property="updateName">
+                UPDATE_NAME = #updateName#
+            </isNotNull>
+            <isNotNull prepend="," property="descri">
+                DESCRI = #descri#
+            </isNotNull>
+        </dynamic>
+        where ID_GROUP = #id#
+    </update>
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+        delete from ts_group
+        where ID_GROUP = #id#
+    </delete>
+    <select id="getByPrimaryKey" resultMap="tsGroupResult" parameterClass="java.lang.String">
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group
+        where ID_GROUP = #id#
+    </select>
+	
+	<select id="queryByMap" resultMap="tsGroupResult" parameterClass="java.util.HashMap">
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="findAll" resultMap="tsGroupResult">
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group
+    </select>  
+	
+	 
+    <select id="count" resultClass="long">
+        SELECT count(*) FROM ts_group <include refid="sqlWhere"/>    
+    </select>
+	<select id="countBySqlWhere" resultClass="long">
+        SELECT count(*) FROM ts_group #sqlWhere#    
+    </select>
+
+	<select id="queryByPage"  resultMap="tsGroupResult"  >  
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group 
+        $sqlWhere$
+    </select>
+	
+    
+     <select id="queryGroups"  resultClass="group"  parameterClass="group" >  
+        select g.id_group as id,g.is_enable as enable,g.group_name as name,
+        	g.createdt as createdt,g.updatedt as createdt 
+        from ts_group g 
+        where 1=1 
+        <isNotEmpty  prepend="AND" property="name">
+			g.group_name = #name#
+		</isNotEmpty>
+  
+    </select>  
+    
+    
+    <select id="getRolesByGroup"  resultClass="role"  parameterClass="group" >  
+        select r.id_role as id,r.is_enable as enable,r.role_name as name,
+        	r.createdt as createdt,r.updatedt as createdt,r.descri as descri 
+        from ts_group g,ts_group_role gr,ts_role r 
+        where g.id_group=gr.grp_id and r.id_role=gr.role_id 
+        and g.id_group=#id#
+  
+    </select>  
+    
+    <select id="getRolesByGroupId"  resultClass="role"  parameterClass="group" >  
+        select r.id_role as id,r.is_enable as enable,r.role_name as name,
+        	r.createdt as createdt,r.updatedt as createdt,r.descri as descri 
+        from ts_role r 
+        where r.id_role in(select role_id from tr_group_role where grp_id=#id#)
+  
+    </select>
+    
+    <select id="getUsersByGroupId"  resultClass="user"  parameterClass="group" >  
+        select u.id_user as id,u.is_enable as enable,u.username as username,u.pwd as password,
+        	u.createdt as createdt,u.updatedt as updatedt,u.realname as realname,u.descri as descri
+        from ts_user u 
+        where id_user in(select user_id from tr_user_group where grp_id=#id#)
+  
+    </select>
+    
+    <select id="getGroupsByRoleId"  resultMap="tsGroupResult"  parameterClass="role" >  
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group
+        where id_group in(select grp_id from tr_group_role where role_id=#id#)
+  
+    </select>
+    
+    <select id="getGroupsByRole"  resultMap="tsGroupResult"  parameterClass="role" >  
+        select g.id_group as id,g.is_enable as enable,g.group_name as name,
+        	g.createdt as createdt,g.updatedt as createdt 
+        from ts_group g,tr_group_role gr,ts_role r where g.id_group=gr.grp_id and r.id_role=gr.role_id 
+        and r.id_role=#id#
+  
+    </select>
+    
+    <select id="getGroupsNotInRoleId"  resultMap="tsGroupResult"  parameterClass="grouprole" >  
+        select ID_GROUP, IS_ENABLE, GROUP_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME, DESCRI
+        from ts_group
+        where id_group not in(select grp_id from tr_group_role where role_id=#roleId#)
+  
+    </select>
+</sqlMap>  

@@ -124,7 +124,7 @@
 	  </filter-mapping>
 	 
 	 <!-- struts访问配置-集成SpringSecurity-Action -->
-	<filter>
+	<!-- <filter>
 		<filter-name>struts2-cleanup</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
 	</filter>
@@ -152,10 +152,10 @@
 	     <url-pattern>*.action</url-pattern>
 	     <dispatcher>REQUEST</dispatcher>
 	     <dispatcher>FORWARD</dispatcher> 
-	 </filter-mapping>
+	 </filter-mapping> -->
 	 
 	 <!-- springmvc配置-集成SpringSecurity-Controller -->
-	 <!-- <servlet>
+	 <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
@@ -168,7 +168,7 @@
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
-    </servlet-mapping> -->
+    </servlet-mapping>
  
    <jsp-config>
 	  <taglib>   

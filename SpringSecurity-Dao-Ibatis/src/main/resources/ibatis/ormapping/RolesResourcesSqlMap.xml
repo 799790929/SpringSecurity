@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!-- <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> -->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd"> <!-- 命名空间路径采用实体类完整路径 -->  
+<sqlMap namespace="trRoleResource" >  
+    <resultMap id="trRoleResourceResult" class="com.byron.ss.model.RolesResources">
+        <result column="ID_ROLE_RESOURCE" property="id" />
+        <result column="RESOURCE_ID" property="resourceId" />
+        <result column="ROLE_ID" property="roleId" />
+        <result column="RESOURCE_NAME" property="resourceName" />
+        <result column="ROLE_NAME" property="roleName" />
+        <result column="CREATEDT" property="createdt" />
+        <result column="UPDATEDT" property="updatedt" />
+        <result column="CREATE_NAME" property="createName" />
+        <result column="UPDATE_NAME" property="updateName" />
+    </resultMap>
+    <sql id="sqlWhere">
+	    <dynamic prepend="WHERE">
+		       <isNotEmpty prepend="AND" property="id">
+		             ID_ROLE_RESOURCE = #id#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="resourceId">
+		             RESOURCE_ID = #resourceId#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="roleId">
+		             ROLE_ID = #roleId#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="resourceName">
+		             RESOURCE_NAME = #resourceName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="roleName">
+		             ROLE_NAME = #roleName#
+		       </isNotEmpty>
+		       <!-- <isNotEmpty prepend="AND" property="createdtBegin">
+		             CREATEDT >= #createdtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="createdtEnd">
+		             CREATEDT &lt;= #createdtEnd#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtBegin">
+		             UPDATEDT >= #updatedtBegin#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updatedtEnd">
+		             UPDATEDT &lt;= #updatedtEnd#
+		       </isNotEmpty> -->
+		       <isNotEmpty prepend="AND" property="createName">
+		             CREATE_NAME = #createName#
+		       </isNotEmpty>
+		       <isNotEmpty prepend="AND" property="updateName">
+		             UPDATE_NAME = #updateName#
+		       </isNotEmpty>
+	    </dynamic>	
+	</sql>
+    <insert id="insert" parameterClass="com.byron.ss.model.RolesResources">
+    	<selectKey keyProperty="id" resultClass="java.lang.String">  
+	        select  replace(uuid(),'-','')   from dual  
+	    </selectKey>
+        insert into tr_role_resource (ID_ROLE_RESOURCE, RESOURCE_ID, ROLE_ID, RESOURCE_NAME,
+            ROLE_NAME, CREATEDT, UPDATEDT, CREATE_NAME, UPDATE_NAME)
+        values (#id#, #resourceId#, #roleId#, #resourceName#, #roleName#, #createdt#,
+            #updatedt#, #createName#, #updateName#)
+    </insert>
+    <update id="updateByPrimaryKey" parameterClass="com.byron.ss.model.RolesResources">
+        update tr_role_resource
+        set RESOURCE_ID = #resourceId#,
+            ROLE_ID = #roleId#,
+            RESOURCE_NAME = #resourceName#,
+            ROLE_NAME = #roleName#,
+            CREATEDT = #createdt#,
+            UPDATEDT = #updatedt#,
+            CREATE_NAME = #createName#,
+            UPDATE_NAME = #updateName#
+        where ID_ROLE_RESOURCE = #id#
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterClass="com.byron.ss.model.RolesResources">
+        update tr_role_resource
+        <dynamic prepend="set">
+            <isNotNull prepend="," property="resourceId">
+                RESOURCE_ID = #resourceId#
+            </isNotNull>
+            <isNotNull prepend="," property="roleId">
+                ROLE_ID = #roleId#
+            </isNotNull>
+            <isNotNull prepend="," property="resourceName">
+                RESOURCE_NAME = #resourceName#
+            </isNotNull>
+            <isNotNull prepend="," property="roleName">
+                ROLE_NAME = #roleName#
+            </isNotNull>
+            <isNotNull prepend="," property="createdt">
+                CREATEDT = #createdt#
+            </isNotNull>
+            <isNotNull prepend="," property="updatedt">
+                UPDATEDT = #updatedt#
+            </isNotNull>
+            <isNotNull prepend="," property="createName">
+                CREATE_NAME = #createName#
+            </isNotNull>
+            <isNotNull prepend="," property="updateName">
+                UPDATE_NAME = #updateName#
+            </isNotNull>
+        </dynamic>
+        where ID_ROLE_RESOURCE = #id#
+    </update>
+    <delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+        delete from tr_role_resource
+        where ID_ROLE_RESOURCE = #id#
+    </delete>
+    <select id="getByPrimaryKey" resultMap="trRoleResourceResult" parameterClass="java.lang.String">
+        select ID_ROLE_RESOURCE, RESOURCE_ID, ROLE_ID, RESOURCE_NAME, ROLE_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_role_resource
+        where ID_ROLE_RESOURCE = #id#
+    </select>  
+    <select id="queryByMap" resultMap="trRoleResourceResult" parameterClass="java.util.HashMap">
+        select ID_ROLE_RESOURCE, RESOURCE_ID, ROLE_ID, RESOURCE_NAME, ROLE_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_role_resource
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="queryByModel" resultMap="trRoleResourceResult" parameterClass="roleresource">
+        select ID_ROLE_RESOURCE, RESOURCE_ID, ROLE_ID, RESOURCE_NAME, ROLE_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_role_resource
+        <include refid="sqlWhere"/>
+    </select>  
+    
+    <select id="findAll" resultMap="trRoleResourceResult">
+        select ID_ROLE_RESOURCE, RESOURCE_ID, ROLE_ID, RESOURCE_NAME, ROLE_NAME, CREATEDT, UPDATEDT,
+            CREATE_NAME, UPDATE_NAME
+        from tr_role_resource
+    </select> 
+    
+	 
+    <select id="count" resultClass="long">
+        SELECT count(*) FROM tr_role_resource <include refid="sqlWhere"/>    
+    </select>
+    <select id="countBySqlWhere" resultClass="long">
+        SELECT count(*) FROM tr_role_resource #sqlWhere#    
+    </select>
+    
+    <!--  -->
+    <delete id="deleteByModel" parameterClass="com.byron.ss.model.RolesResources">
+        delete from tr_role_resource
+        where 1=1 
+        <isNotEmpty property="roleId">
+            and role_id = #roleId#
+        </isNotEmpty>
+        <isNotEmpty property="resourceId">
+            and RESOURCE_ID = #resourceId#
+        </isNotEmpty>
+    </delete>
+</sqlMap>  

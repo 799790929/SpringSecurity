@@ -39,6 +39,55 @@ super/super
 
 
 3.使用说明
+3.0 可以根据主体项目的jar包,选择springmvc或struts,ibatis或hibernate.修改pom.xml生成不同的依赖jar包
+
+web.xml修改:
+<!-- struts访问配置-集成SpringSecurity-Action -->
+	<!-- <filter>
+		<filter-name>struts2-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<filter>
+	      <filter-name>struts2Filter</filter-name>
+	      <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+    
+    <filter-mapping>
+        <filter-name>struts2-cleanup</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>		
+    <filter-mapping>
+        <filter-name>struts2Filter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>    
+    <filter-mapping>
+	<filter-name>struts2Filter</filter-name>
+	    <url-pattern>*.jsp</url-pattern>
+	    <dispatcher>REQUEST</dispatcher>
+	    <dispatcher>FORWARD</dispatcher> 
+	 </filter-mapping>
+	 <filter-mapping>
+		 <filter-name>struts2Filter</filter-name>
+	     <url-pattern>*.action</url-pattern>
+	     <dispatcher>REQUEST</dispatcher>
+	     <dispatcher>FORWARD</dispatcher> 
+	 </filter-mapping> -->
+	 
+	 <!-- springmvc配置-集成SpringSecurity-Controller -->
+	 <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:spring/applicationContext-servlet.xml</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
 3.1 登陆需集成SpringSecurity-Common的登陆方式
 

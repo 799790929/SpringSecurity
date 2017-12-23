@@ -7,6 +7,8 @@
 
 package com.byron.ss.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,7 @@ import com.byron.ss.common.base.BaseManager;
 import com.byron.ss.common.base.EntityDao;
 import com.byron.ss.dao.ResourcesDao;
 import com.byron.ss.model.Resources;
+import com.byron.ss.model.Roles;
 
 
 /**
@@ -38,6 +41,14 @@ public class ResourcesManager extends BaseManager<Resources,java.lang.String>{
 	private RolesResourcesManager rolesResourcesManager;
 	public void setRolesResourcesManager(RolesResourcesManager rolesResourcesManager) {
 		this.rolesResourcesManager = rolesResourcesManager;
+	}
+	
+	public long getRowsNotInRoleId(String roleId) {
+		return resourcesDao.getRowsNotInRoleId(roleId);
+	}
+	
+	public List<Resources> queryByPageNotInRoleId(int start, int pageSize, String roleId) {
+		return resourcesDao.queryByPageNotInRoleId(start, pageSize, roleId);
 	}
 	
 	/*@Transactional(readOnly=true)
@@ -79,5 +90,18 @@ public class ResourcesManager extends BaseManager<Resources,java.lang.String>{
 				}
 			}
 		}*/
+	}
+	
+	public List<Resources> getResourcesNotInRowId(String roleId) {
+		return resourcesDao.getResourcesNotInRowId(roleId);
+	}
+	
+	public List<Resources> getResourcesByName(String name) {
+		return resourcesDao.getResourcesByName(name);
+	}
+	
+	public List<Resources> getResourcesByRoleId(Roles role) {
+		List<Resources>  list = resourcesDao.getResourcesByRoleId(role);
+		return list;
 	}
 }

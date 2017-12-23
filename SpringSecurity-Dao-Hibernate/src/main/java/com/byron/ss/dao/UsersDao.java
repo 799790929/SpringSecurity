@@ -33,6 +33,19 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 		return Users.class;
 	}
 	
+	public long getRowsNotInGroupId(String groupId) {
+		String sqlWhere = " where 1=1 ";
+		sqlWhere += " and "+ Users.u_pk_user +" not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + groupId + "') ";
+		long rows = getRows(sqlWhere);
+		return rows;
+	}
+	
+	public List<Users> queryByPageNotInGroupId(int start, int pageSize, String groupId) {
+		String sqlWhere = " where 1=1 ";
+		sqlWhere += " and "+ Users.u_pk_user +" not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + groupId + "') ";
+		return queryByPage(start, pageSize, sqlWhere);
+	}
+	
 	public long getRowsBySql(String query) {
 		Session session = this.getSessionFactory().openSession();
 		String queryString = "select count(*) from " + getEntityClass().getName();
@@ -42,6 +55,18 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 		Query q = session.createQuery(queryString);
 		
 		return (Long) q.list().get(0);
+	}
+	
+	public List<Users> getUsersByGroupId(String groupId) {
+		String hql = "from com.byron.ss.model.Users where id in (select userId from com.byron.ss.model.UsersGroups where groupId='" + groupId + "')";
+		List<Users> users = executeFind(hql, null);
+		return users;
+	}
+	
+	public List<Users> getUsersNotInGroupId(String groupId) {
+		String hql = "from com.byron.ss.model.Users where id not in (select userId from com.byron.ss.model.UsersGroups where groupId='" + groupId + "')";
+		List<Users> users = executeFind(hql, null);
+		return users;
 	}
 
 	public List<Groups> getGroupsByUser(Users user) throws Exception {
@@ -166,6 +191,11 @@ public class UsersDao extends BaseHibernateDao<Users,java.lang.String>{
 		List<Users> objs = this.findBy("username", name, "");
 //		List<Users> objs = this.findByCriteria(Restrictions.eq("account", name));
 		return (objs.size() == 0 ? null : objs.get(0)); 
+	}
+	
+	public List<Users> queryUsersByName(String name) {
+		List<Users> objs = this.findBy("username", name, "");
+		return objs;
 	}
 
 	public void setGroupsDao(GroupsDao groupsDao) {
