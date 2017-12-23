@@ -1,9 +1,4 @@
-/*
- * Powered By [rapid-framework]
- * Web Site: http://www.rapid-framework.org.cn
- * Google Code: http://code.google.com/p/rapid-framework/
- * Since 2008 - 2014
- */
+
 
 package com.byron.ss.action;
 
@@ -21,7 +16,7 @@ import com.opensymphony.xwork2.Preparable;
 
 
 /**
- * @author badqiu email:badqiu(a)gmail.com
+ * @author byron
  * @version 1.0
  * @since 1.0
  */

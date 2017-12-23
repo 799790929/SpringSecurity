@@ -1,17 +1,10 @@
-/*
- * Powered By [rapid-framework]
- * Web Site: http://www.rapid-framework.org.cn
- * Google Code: http://code.google.com/p/rapid-framework/
- * Since 2008 - 2014
- */
+
 
 package com.byron.ss.action;
 
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpUtils;
 
 import org.apache.log4j.Logger;
 
@@ -22,12 +15,11 @@ import com.byron.ss.model.Roles;
 import com.byron.ss.service.GroupsManager;
 import com.byron.ss.service.GroupsRolesManager;
 import com.byron.ss.service.RolesManager;
-import com.byron.ss.vo.query.GroupsRolesQuery;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 
 /**
- * @author badqiu email:badqiu(a)gmail.com
+ * @author byron
  * @version 1.0
  * @since 1.0
  */
