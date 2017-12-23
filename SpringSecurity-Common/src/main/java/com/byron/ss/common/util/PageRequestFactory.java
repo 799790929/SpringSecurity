@@ -4,7 +4,7 @@ package com.byron.ss.common.util;
 import org.apache.commons.beanutils.BeanUtilsBean;
 /**
  * 用于分页组件覆盖的类,新的分页组件覆盖此类的bindPageRequest()方法以适合不同的分页创建
- * @author badqiu
+ * @author byron
  */
 public class PageRequestFactory {
     public static final int MAX_PAGE_SIZE = 1000;

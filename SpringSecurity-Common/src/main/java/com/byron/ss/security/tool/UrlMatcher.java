@@ -4,7 +4,7 @@ package com.byron.ss.security.tool;
  * 
  * <p>ClassName: UrlMatcher</p>
  * <p>Description: TODO</p>
- * <p>Author: hadoop</p>
+ * <p>Author: byron</p>
  * <p>Date: 2017-5-29</p>
  */
 public abstract interface UrlMatcher {

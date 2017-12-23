@@ -16,7 +16,7 @@ import com.byron.ss.common.base.BaseQuery;
 
 
 /**
- * @author badqiu email:badqiu(a)gmail.com
+ * @author byron
  * @version 1.0
  * @since 1.0
  */

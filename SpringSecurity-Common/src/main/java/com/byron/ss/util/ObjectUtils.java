@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author badqiu
+ * @author byron
  */
 public class ObjectUtils {
 
